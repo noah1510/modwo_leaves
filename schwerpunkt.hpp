@@ -3,6 +3,6 @@
 
 using namespace std;
 
-const int BILDGROESSE = 512;
+//const int BILDGROESSE = 512;
 
-vector <int>  schwerpunkt(vector < vector < int > >);
+vector <int>  schwerpunkt(vector < vector < int > > image);
