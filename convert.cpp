@@ -7,7 +7,7 @@ int* convimg (string path) {
     static int pgm [BILDGROESSE*BILDGROESSE];
     string out;
     string line;
-    ifstream imageget ("sample.pgm");
+    ifstream imageget (path);
     if (imageget.is_open() ) {
         int counter = 0;
         while ( getline (imageget, line)) {

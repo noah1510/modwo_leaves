@@ -14,7 +14,7 @@ vector< vector<int> > fog (1,v_int);
 int main() {
 
 	//std::vector< std::vector<int> > img =  convertImage("test");
-	int* p = convimg("Hi");
+	int* p = convimg("sample.pgm");
 	for (int i = 0; i<BILDGROESSE*BILDGROESSE;i++){
 		cout << *(p+i) << ", " ;
 	}
