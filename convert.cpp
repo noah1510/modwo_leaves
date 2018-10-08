@@ -4,7 +4,7 @@ using namespace std;
 
 int* convimg (string path, int groesse) {
 
-    static int pgm [groesse*groesse];
+    static int pgm [256*256];
     string out;
     string line;
     ifstream imageget (path);

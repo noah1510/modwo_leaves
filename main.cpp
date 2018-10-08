@@ -20,7 +20,7 @@ int main() {
 	int* p = convimg("sample.pgm", BILDGROESSE);
 	int* point = schwerpunkt(p, BILDGROESSE);
 
-	cout << "Schwerpunkt x:" << *(p) << " , y:" << *(p+1) << endl;
+	cout << "Schwerpunkt x:" << *(point) << " , y:" << *(point+1) << endl;
 
 	return 0;
 } 
