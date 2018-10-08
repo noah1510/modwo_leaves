@@ -4,23 +4,30 @@
     Description: Ermittelt Aritmethisches Mittel der Zeilen und Spalten (in abhängigkeit von Pixel ist Blatt oder nicht: 1 oder 0), um Schwerpunkt zu bestimmen  
 */
 #include "convert.hpp"
-#include <math.h>;
+#include <math.h>
 
-vector <int>  schwerpunkt(vector < vector < int > > image){
-    int Sum;
-    int rowWeight;
-    int colWeight;
+ int*  schwerpunkt(int* arr_img,int groesse){
+    int Sum = 0;
+    int rowWeight = 0;
+    int colWeight = 0;
 
-//Mittel berechnen
-    for (int x = 0; x < image.size();){
-        vector<int> row = image[x];
-        for(int y = 0; y < row.size();){
-            if (i_pixel > 220) break; 
-            int i_pixel = row[y];
-            Sum++;
-            rowWeight += x;
-            colWeight += y;
-        }
+     //Mittel berechnen
+     int x = 0;
+     for(int i = 0;i < groesse * groesse;i++){
+         for (int y = 0; y < groesse; y++){
+             int i_pixel = *(arr_img+i);
+             if (i_pixel > 220) break;
+             Sum++;
+             rowWeight += x;
+             colWeight += y;
+             i++;
+         }
+         x++;
     }
-    return vector(round(rowWeight / Sum), round(colWeight / Sum));
+     static int point [2];
+     
+     point[0] = round(rowWeight / Sum);
+     point[1] = round(rowWeight / Sum);
+     
+     return point;
 }
