@@ -3,7 +3,7 @@
     Created: 08.10.2018
     Description: Ermittelt Aritmethisches Mittel der Zeilen und Spalten (in abhängigkeit von Pixel ist Blatt oder nicht: 1 oder 0), um Schwerpunkt zu bestimmen  
 */
-#include "convert.hpp"
+#include "schwerpunkt.hpp"
 #include <math.h>
 
  int*  schwerpunkt(int* arr_img,int groesse){

@@ -1,24 +1,26 @@
 //#include "stdafx.h"
-#include "convert.cpp"
 #include <iostream>
 #include <math.h>
+
 #include "convert.hpp"
+#include "convert.cpp"
 #include "schwerpunkt.hpp"
-#include <vector>
+#include "schwerpunkt.cpp"
+
+
 using namespace std;
 
-vector<int> v_int(1,0);
 
-vector< vector<int> > fog (1,v_int);
+const int BILDGROESSE = 256;
+
 
 int main() {
 
 	//std::vector< std::vector<int> > img =  convertImage("test");
-	int* p = convimg("sample.pgm");
-	for (int i = 0; i<BILDGROESSE*BILDGROESSE;i++){
-		cout << *(p+i) << ", " ;
-	}
-	cout << "Hello World!!" << endl;
+	int* p = convimg("sample.pgm", BILDGROESSE);
+	int* point = schwerpunkt(p, BILDGROESSE);
+
+	cout << "Schwerpunkt x:" << *(p) << " , y:" << *(p+1) << endl;
 
 	return 0;
 } 

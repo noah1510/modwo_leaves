@@ -1,8 +1,7 @@
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
 //const int BILDGROESSE = 512;
 
-vector <int>  schwerpunkt(vector < vector < int > > image);
+ int*  schwerpunkt(int* arr_img,int groesse);

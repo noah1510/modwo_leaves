@@ -2,9 +2,9 @@
 
 using namespace std;
 
-int* convimg (string path) {
+int* convimg (string path, int groesse) {
 
-    static int pgm [BILDGROESSE*BILDGROESSE];
+    static int pgm [groesse*groesse];
     string out;
     string line;
     ifstream imageget (path);
