@@ -17,7 +17,7 @@ const int BILDGROESSE = 256;
 int main() {
 
 	//std::vector< std::vector<int> > img =  convertImage("test");
-	int* p = convimg("sample.pgm", BILDGROESSE);
+	int* p = convimg("schwarz_links.pgm", BILDGROESSE);
 	int* point = schwerpunkt(p, BILDGROESSE);
 
 	cout << "Schwerpunkt x:" << *(point) << " , y:" << *(point+1) << endl;

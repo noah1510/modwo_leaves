@@ -14,20 +14,23 @@
      //Mittel berechnen
      int x = 0;
      for(int i = 0;i < groesse * groesse;i++){
-         for (int y = 0; y < groesse; y++){
-             int i_pixel = *(arr_img+i);
-             if (i_pixel > 220) break;
-             Sum++;
-             rowWeight += x;
-             colWeight += y;
-             i++;
+        int pos_x = i%groesse;
+        int pos_y = i/groesse;
+        int i_pixel = *(arr_img+i);
+
+         if(i_pixel < 220){
+            Sum++;
+            rowWeight += pos_x;
+            colWeight += pos_y;
+
+         }else{
          }
-         x++;
+         
     }
      static int point [2];
      
      point[0] = round(rowWeight / Sum);
-     point[1] = round(rowWeight / Sum);
+     point[1] = round(colWeight / Sum);
      
      return point;
 }
