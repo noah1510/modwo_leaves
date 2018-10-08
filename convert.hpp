@@ -1,8 +1,12 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
+#include <string>
 
 using namespace std;
 
-const int BILDGROESSE = 512;
+const int BILDGROESSE = 256;
 
-vector < vector < int > >  convertImage(string);
+int* convimg (string path);
+
+//vector < vector <int> > convertImage(string bob);
