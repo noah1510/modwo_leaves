@@ -6,6 +6,6 @@ using namespace std;
 
 //const int BILDGROESSE = 256;
 
-int* convimg (string path, int groesse);
+int convimg (string path, int* output);
 
 //vector < vector <int> > convertImage(string bob);

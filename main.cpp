@@ -17,8 +17,22 @@ const int BILDGROESSE = 256;
 int main() {
 
 	//std::vector< std::vector<int> > img =  convertImage("test");
-	int* p = convimg("schwarz_links.pgm", BILDGROESSE);
-	int* point = schwerpunkt(p, BILDGROESSE);
+	string filename;
+	static int pgm [BILDGROESSE*BILDGROESSE];
+
+	int err = 0;
+	do{
+		cout << "Geben sie den Dateinamen ein." << endl;
+
+		cin >> filename;
+	
+		err = convimg(filename+".pgm", pgm);
+		if(err != 0){
+			cout << "Datei nicht vorhanden!" << endl;
+		}
+	}while(err != 0);
+
+	int* point = schwerpunkt(pgm, BILDGROESSE);
 
 	cout << "Schwerpunkt x:" << *(point) << " , y:" << *(point+1) << endl;
 
