@@ -12,7 +12,6 @@
     int colWeight = 0;
 
      //Mittel berechnen
-     int x = 0;
      for(int i = 0;i < groesse * groesse;i++){
         int pos_x = i%groesse;
         int pos_y = i/groesse;
