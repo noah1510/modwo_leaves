@@ -8,8 +8,10 @@
 
 #ifndef vektoren_hpp
 #define vektoren_hpp
+#define _USE_MATH_DEFINES
 
 #include <stdio.h>
+
 
 int vektoren(float* laengen, int* arr_img, int* point, int bildgroesse, int anzahlvektoren);
 

@@ -5,6 +5,7 @@
 //  Created by Tobias Höpp on 09.10.18.
 //  Copyright © 2018 Tobias Höpp. All rights reserved.
 //
+#define _USE_MATH_DEFINES
 
 #include "vektoren.hpp"
 #include <math.h>
@@ -15,14 +16,15 @@ int vektoren(float* laengen, int* arr_img, int* point, int bildgroesse, int anza
     //alle Vektoren erstellen
     
     for (int i = 0; i<anzahlvektoren; i++){
-        float vecA = sin(360/anzahlvektoren*i)*WURZEL2;
-        float vecB = cos(360/anzahlvektoren*i)*WURZEL2;
+        float vecA = sin(6.28f/anzahlvektoren*i);
+        float vecB = cos(6.28f/anzahlvektoren*i);
+        //cout << "vectorA:" << vecA << ", vectorB:" << vecB << endl;
         for(int j = 0; true; j++){
-            int pos_x = round(vecB * j + *(point + 1));
-            int pos_y = round(vecA * j) + *(point);
+            int pos_x = round(vecA * j + *(point + 1));
+            int pos_y = round(vecB * j) + *(point);
 
-            int delta_x;
-            int delta_y;
+            int delta_x = 0;
+            int delta_y = 0;
 
             delta_x = abs(pos_x - *(point));
             delta_y = abs(pos_y - *(point + 1));
@@ -32,20 +34,20 @@ int vektoren(float* laengen, int* arr_img, int* point, int bildgroesse, int anza
 
             if(pos_x > bildgroesse || pos_x < 0){
                 *(laengen + i) = dist; 
-                cout << "i:" << i << ", dist:" << *(laengen + i) << ", j:" << j << endl;
+                //cout << "i:" << i << ", dist:" << *(laengen + i) << ", j:" << j << ", dx:" << delta_x << ", dy:" << delta_y << endl;
                 break;
             }
 
             if(pos_y > bildgroesse || pos_y < 0){ 
                 *(laengen + i) = dist;
-                cout << "i:" << i << ", dist:" << *(laengen + i) << ", j:" << j << endl;
+                //cout << "i:" << i << ", dist:" << *(laengen + i) << ", j:" << j << ", dx:" << delta_x << ", dy:" << delta_y << endl;
                 break;
             }
 
             int pixNum = pos_x  * bildgroesse + pos_y;
             if(*(arr_img+pixNum) > 220){
                 *(laengen + i) = dist;
-                cout << "i:" << i << ", dist:" << *(laengen + i) << ", j:" << j << endl;
+                //cout << "i:" << i << ", dist:" << *(laengen + i) << ", j:" << j << ", dx:" << delta_x << ", dy:" << delta_y << endl;
                 break;
             }
             
