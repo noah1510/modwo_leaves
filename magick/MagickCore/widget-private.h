@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_WIDGET_PRIVATE_H
 #define MAGICKCORE_WIDGET_PRIVATE_H
 
-#include "MagickCore/xwindow-private.h"
+#include "../MagickCore/xwindow-private.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

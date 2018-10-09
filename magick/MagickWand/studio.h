@@ -32,7 +32,7 @@ extern "C" {
 
 #if !defined(MAGICKWAND_CONFIG_H)
 # define MAGICKWAND_CONFIG_H
-# include "MagickCore/magick-config.h"
+# include "../MagickCore/magick-config.h"
 #if defined(MAGICKCORE__FILE_OFFSET_BITS) && !defined(_FILE_OFFSET_BITS)
 # define _FILE_OFFSET_BITS MAGICKCORE__FILE_OFFSET_BITS
 #endif
@@ -166,7 +166,7 @@ extern size_t strlcpy(char *,const char *,size_t);
 extern int vsnprintf(char *,size_t,const char *,va_list);
 #endif
 
-#include "MagickWand/method-attribute.h"
+#include "../MagickWand/method-attribute.h"
 
 #if defined(MAGICKWAND_WINDOWS_SUPPORT) || defined(MAGICKWAND_POSIX_SUPPORT)
 # include <sys/types.h>
@@ -200,7 +200,7 @@ extern int vsnprintf(char *,size_t,const char *,va_list);
 # if !defined(S_ISREG)
 #  define S_ISREG(mode) (((mode) & S_IFMT) == S_IFREG)
 # endif
-# include "MagickWand/MagickWand.h"
+# include "../MagickWand/MagickWand.h"
 # if !defined(MAGICKWAND_WINDOWS_SUPPORT)
 #  include <sys/time.h>
 # if defined(MAGICKCORE_HAVE_SYS_TIMES_H)
@@ -237,7 +237,7 @@ extern int vsnprintf(char *,size_t,const char *,va_list);
 #endif
 
 #if defined(MAGICKWAND_WINDOWS_SUPPORT)
-# include "MagickCore/nt-base.h"
+# include "../MagickCore/nt-base.h"
 #endif
 
 #undef HAVE_CONFIG_H

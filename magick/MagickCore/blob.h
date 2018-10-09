@@ -44,8 +44,8 @@ typedef MagickOffsetType
 typedef struct _CustomStreamInfo
   CustomStreamInfo;
 
-#include "MagickCore/image.h"
-#include "MagickCore/stream.h"
+#include "../MagickCore/image.h"
+#include "../MagickCore/stream.h"
 
 extern MagickExport CustomStreamInfo
   *AcquireCustomStreamInfo(ExceptionInfo *),

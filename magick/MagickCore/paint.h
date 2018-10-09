@@ -18,8 +18,8 @@
 #ifndef MAGICKCORE_PAINT_H
 #define MAGICKCORE_PAINT_H
 
-#include "MagickCore/color.h"
-#include "MagickCore/draw.h"
+#include "../MagickCore/color.h"
+#include "../MagickCore/draw.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

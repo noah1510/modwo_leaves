@@ -18,7 +18,7 @@
 #ifndef MAGICKWAND_DRAWING_WAND_H
 #define MAGICKWAND_DRAWING_WAND_H
 
-#include "MagickWand/pixel-wand.h"
+#include "../MagickWand/pixel-wand.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

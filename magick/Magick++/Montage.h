@@ -8,10 +8,10 @@
 #if !defined(Magick_Montage_header)
 #define Magick_Montage_header
 
-#include "Magick++/Include.h"
+#include "../Magick++/Include.h"
 #include <string>
-#include "Magick++/Color.h"
-#include "Magick++/Geometry.h"
+#include "../Magick++/Color.h"
+#include "../Magick++/Geometry.h"
 
 //
 // Basic (Un-framed) Montage

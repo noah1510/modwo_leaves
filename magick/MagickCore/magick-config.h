@@ -22,7 +22,7 @@
 extern "C" {
 #endif
 
-#include "MagickCore/magick-baseconfig.h"
+#include "../MagickCore/magick-baseconfig.h"
 
 /* Compatibility block */
 #if !defined(MAGICKCORE_QUANTUM_DEPTH) && defined(MAGICKCORE_QUANTUM_DEPTH_OBSOLETE_IN_H)

@@ -9,6 +9,9 @@
 
 #include "vektoren.hpp"
 #include <math.h>
+#include <iostream>
+
+using namespace std;
 
 const float WURZEL2 = sqrt(2);
 

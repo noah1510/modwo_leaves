@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_ENHANCE_H
 #define MAGICKCORE_ENHANCE_H
 
-#include "MagickCore/pixel.h"
+#include "../MagickCore/pixel.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

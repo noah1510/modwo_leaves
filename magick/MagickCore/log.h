@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_LOG_H
 #define MAGICKCORE_LOG_H
 
-#include "MagickCore/exception.h"
+#include "../MagickCore/exception.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

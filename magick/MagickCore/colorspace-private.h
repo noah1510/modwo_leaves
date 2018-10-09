@@ -18,10 +18,10 @@
 #ifndef MAGICKCORE_COLORSPACE_PRIVATE_H
 #define MAGICKCORE_COLORSPACE_PRIVATE_H
 
-#include "MagickCore/image.h"
-#include "MagickCore/image-private.h"
-#include "MagickCore/pixel.h"
-#include "MagickCore/pixel-accessor.h"
+#include "../MagickCore/image.h"
+#include "../MagickCore/image-private.h"
+#include "../MagickCore/pixel.h"
+#include "../MagickCore/pixel-accessor.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

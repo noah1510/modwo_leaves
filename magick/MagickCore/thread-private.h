@@ -18,10 +18,10 @@
 #ifndef MAGICKCORE_THREAD_PRIVATE_H
 #define MAGICKCORE_THREAD_PRIVATE_H
 
-#include "MagickCore/cache.h"
-#include "MagickCore/image-private.h"
-#include "MagickCore/resource_.h"
-#include "MagickCore/thread_.h"
+#include "../MagickCore/cache.h"
+#include "../MagickCore/image-private.h"
+#include "../MagickCore/resource_.h"
+#include "../MagickCore/thread_.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

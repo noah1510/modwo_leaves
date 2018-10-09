@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_CONFIGURE_H
 #define MAGICKCORE_CONFIGURE_H
 
-#include "MagickCore/linked-list.h"
+#include "../MagickCore/linked-list.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

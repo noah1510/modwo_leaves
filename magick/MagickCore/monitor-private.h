@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_MONITOR_PRIVATE_H
 #define MAGICKCORE_MONITOR_PRIVATE_H
 
-#include "MagickCore/image.h"
+#include "../MagickCore/image.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

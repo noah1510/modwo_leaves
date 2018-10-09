@@ -18,8 +18,8 @@
 #ifndef MAGICKCORE_QUANTUM_H
 #define MAGICKCORE_QUANTUM_H
 
-#include "MagickCore/image.h"
-#include "MagickCore/semaphore.h"
+#include "../MagickCore/image.h"
+#include "../MagickCore/semaphore.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

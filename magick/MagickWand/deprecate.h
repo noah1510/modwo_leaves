@@ -22,7 +22,7 @@
 extern "C" {
 #endif
 
-#include "MagickWand/pixel-wand.h"
+#include "../MagickWand/pixel-wand.h"
 
 #if !defined(MAGICKCORE_EXCLUDE_DEPRECATED)
 

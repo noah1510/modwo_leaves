@@ -10,17 +10,17 @@
 #ifndef Magick_STL_header
 #define Magick_STL_header
 
-#include "Magick++/Include.h"
+#include "../Magick++/Include.h"
 #include <algorithm>
 #include <functional>
 #include <iterator>
 #include <map>
 #include <utility>
 
-#include "Magick++/CoderInfo.h"
-#include "Magick++/Drawable.h"
-#include "Magick++/Exception.h"
-#include "Magick++/Montage.h"
+#include "../Magick++/CoderInfo.h"
+#include "../Magick++/Drawable.h"
+#include "../Magick++/Exception.h"
+#include "../Magick++/Montage.h"
 
 namespace Magick
 {

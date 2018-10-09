@@ -11,7 +11,7 @@
 #if !defined(_MAGICK_CONFIG_H)
 #  define _MAGICK_CONFIG_H
 #  if !defined(vms) && !defined(macintosh)
-#    include "MagickCore/magick-config.h"
+#    include "../MagickCore/magick-config.h"
 #  else
 #    include "magick-config.h"
 #  endif
@@ -39,8 +39,8 @@
 //
 namespace MagickCore
 {
-#include <MagickCore/MagickCore.h>
-#include <MagickWand/MagickWand.h>
+#include "../MagickCore/MagickCore.h"
+#include "../MagickWand/MagickWand.h"
 #undef inline // Remove possible definition from config.h
 
 #undef class

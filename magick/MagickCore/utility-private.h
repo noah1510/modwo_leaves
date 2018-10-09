@@ -18,9 +18,9 @@
 #ifndef MAGICKCORE_UTILITY_PRIVATE_H
 #define MAGICKCORE_UTILITY_PRIVATE_H
 
-#include "MagickCore/memory_.h"
-#include "MagickCore/nt-base.h"
-#include "MagickCore/nt-base-private.h"
+#include "../MagickCore/memory_.h"
+#include "../MagickCore/nt-base.h"
+#include "../MagickCore/nt-base-private.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

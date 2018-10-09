@@ -18,9 +18,9 @@
 #ifndef MAGICKCORE_DRAW_PRIVATE_H
 #define MAGICKCORE_DRAW_PRIVATE_H
 
-#include "MagickCore/cache.h"
-#include "MagickCore/image.h"
-#include "MagickCore/memory_.h"
+#include "../MagickCore/cache.h"
+#include "../MagickCore/image.h"
+#include "../MagickCore/memory_.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

@@ -18,9 +18,9 @@
 #ifndef MAGICKCORE_COLORMAP_PRIVATE_H
 #define MAGICKCORE_COLORMAP_PRIVATE_H
 
-#include "MagickCore/image.h"
-#include "MagickCore/color.h"
-#include "MagickCore/exception-private.h"
+#include "../MagickCore/image.h"
+#include "../MagickCore/color.h"
+#include "../MagickCore/exception-private.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

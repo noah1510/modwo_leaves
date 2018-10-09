@@ -11,8 +11,8 @@
 #if !defined (Magick_TypeMetric_header)
 #define Magick_TypeMetric_header
 
-#include "Magick++/Include.h"
-#include "Magick++/Drawable.h"
+#include "../Magick++/Include.h"
+#include "../Magick++/Drawable.h"
 
 namespace Magick
 {

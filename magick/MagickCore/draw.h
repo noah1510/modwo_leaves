@@ -18,11 +18,11 @@
 #ifndef MAGICKCORE_DRAW_H
 #define MAGICKCORE_DRAW_H
 
-#include "MagickCore/geometry.h"
-#include "MagickCore/image.h"
-#include "MagickCore/pixel.h"
-#include "MagickCore/type.h"
-#include "MagickCore/color.h"
+#include "../MagickCore/geometry.h"
+#include "../MagickCore/image.h"
+#include "../MagickCore/pixel.h"
+#include "../MagickCore/type.h"
+#include "../MagickCore/color.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

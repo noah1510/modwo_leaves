@@ -18,10 +18,10 @@
 #ifndef MAGICKCORE_QUANTUM_PRIVATE_H
 #define MAGICKCORE_QUANTUM_PRIVATE_H
 
-#include "MagickCore/memory_.h"
-#include "MagickCore/cache.h"
-#include "MagickCore/image-private.h"
-#include "MagickCore/pixel-accessor.h"
+#include "../MagickCore/memory_.h"
+#include "../MagickCore/cache.h"
+#include "../MagickCore/image-private.h"
+#include "../MagickCore/pixel-accessor.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

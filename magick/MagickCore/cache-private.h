@@ -18,13 +18,13 @@
 #ifndef MAGICKCORE_CACHE_PRIVATE_H
 #define MAGICKCORE_CACHE_PRIVATE_H
 
-#include "MagickCore/cache.h"
-#include "MagickCore/distribute-cache.h"
-#include "MagickCore/opencl-private.h"
-#include "MagickCore/pixel.h"
-#include "MagickCore/random_.h"
-#include "MagickCore/thread-private.h"
-#include "MagickCore/semaphore.h"
+#include "../MagickCore/cache.h"
+#include "../MagickCore/distribute-cache.h"
+#include "../MagickCore/opencl-private.h"
+#include "../MagickCore/pixel.h"
+#include "../MagickCore/random_.h"
+#include "../MagickCore/thread-private.h"
+#include "../MagickCore/semaphore.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

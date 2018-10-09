@@ -18,9 +18,9 @@
 #ifndef MAGICKCORE_BLOB_PRIVATE_H
 #define MAGICKCORE_BLOB_PRIVATE_H
 
-#include "MagickCore/image.h"
-#include "MagickCore/stream.h"
-#include "MagickCore/nt-base-private.h"
+#include "../MagickCore/image.h"
+#include "../MagickCore/stream.h"
+#include "../MagickCore/nt-base-private.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

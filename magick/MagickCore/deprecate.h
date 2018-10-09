@@ -24,7 +24,7 @@ extern "C" {
 
 #if !defined(MAGICKCORE_EXCLUDE_DEPRECATED)
 
-#include "MagickCore/magick.h"
+#include "../MagickCore/magick.h"
 
 typedef int
   *(*BlobFifo)(const Image *,const void *,const size_t);

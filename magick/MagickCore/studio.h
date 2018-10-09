@@ -32,7 +32,7 @@ extern "C" {
 
 #if !defined(MAGICKCORE_CONFIG_H)
 # define MAGICKCORE_CONFIG_H
-#include "MagickCore/magick-config.h"
+#include "../MagickCore/magick-config.h"
 # if defined(MAGICKCORE__FILE_OFFSET_BITS) && !defined(_FILE_OFFSET_BITS)
 # define _FILE_OFFSET_BITS MAGICKCORE__FILE_OFFSET_BITS
 #endif
@@ -48,7 +48,7 @@ extern "C" {
 #endif
 
 #if defined(MAGICKCORE_NAMESPACE_PREFIX)
-# include "MagickCore/methods.h"
+# include "../MagickCore/methods.h"
 #endif
 
 #if !defined(const)
@@ -168,7 +168,7 @@ extern size_t strlcpy(char *,const char *,size_t);
 extern int vsnprintf(char *,size_t,const char *,va_list);
 #endif
 
-#include "MagickCore/method-attribute.h"
+#include "../MagickCore/method-attribute.h"
 
 #if defined(MAGICKCORE_WINDOWS_SUPPORT) || defined(MAGICKCORE_POSIX_SUPPORT)
 # include <sys/types.h>
@@ -202,7 +202,7 @@ extern int vsnprintf(char *,size_t,const char *,va_list);
 # if !defined(S_ISREG)
 #  define S_ISREG(mode) (((mode) & S_IFMT) == S_IFREG)
 # endif
-# include "MagickCore/magick-type.h"
+# include "../MagickCore/magick-type.h"
 # if !defined(MAGICKCORE_WINDOWS_SUPPORT)
 #  include <sys/time.h>
 # if defined(MAGICKCORE_HAVE_SYS_TIMES_H)
@@ -228,7 +228,7 @@ extern int vsnprintf(char *,size_t,const char *,va_list);
 #  endif
 #  include <unix.h>
 # endif
-# include "MagickCore/magick-type.h"
+# include "../MagickCore/magick-type.h"
 #endif
 
 #if defined(S_IRUSR) && defined(S_IWUSR)
@@ -240,10 +240,10 @@ extern int vsnprintf(char *,size_t,const char *,va_list);
 #endif
 
 #if defined(MAGICKCORE_WINDOWS_SUPPORT)
-# include "MagickCore/nt-base.h"
+# include "../MagickCore/nt-base.h"
 #endif
 #ifdef __VMS
-# include "MagickCore/vms.h"
+# include "../MagickCore/vms.h"
 #endif
 
 #undef HAVE_CONFIG_H

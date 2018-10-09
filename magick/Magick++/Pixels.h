@@ -9,9 +9,9 @@
 #if !defined(Magick_Pixels_header)
 #define Magick_Pixels_header
 
-#include "Magick++/Include.h"
-#include "Magick++/Color.h"
-#include "Magick++/Image.h"
+#include "../Magick++/Include.h"
+#include "../Magick++/Color.h"
+#include "../Magick++/Image.h"
 
 namespace Magick
 {

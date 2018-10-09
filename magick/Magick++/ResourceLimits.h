@@ -8,7 +8,7 @@
 #if !defined(Magick_ResourceLimits_header)
 #define Magick_ResourceLimits_header
 
-#include "Magick++/Include.h"
+#include "../Magick++/Include.h"
 
 namespace Magick
 {

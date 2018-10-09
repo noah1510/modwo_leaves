@@ -3,11 +3,11 @@
 #include <math.h>
 
 #include "convert.hpp"
-#include "convert.cpp"
+//#include "convert.cpp"
 #include "schwerpunkt.hpp"
-#include "schwerpunkt.cpp"
+//#include "schwerpunkt.cpp"
 #include "vektoren.hpp"
-#include "vektoren.cpp"
+//#include "vektoren.cpp"
 
 
 using namespace std;

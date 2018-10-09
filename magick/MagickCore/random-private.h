@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_RANDOM_PRIVATE_H
 #define MAGICKCORE_RANDOM_PRIVATE_H
 
-#include "MagickCore/thread-private.h"
+#include "../MagickCore/thread-private.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

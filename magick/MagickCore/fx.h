@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_FX_H
 #define MAGICKCORE_FX_H
 
-#include "MagickCore/draw.h"
+#include "../MagickCore/draw.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

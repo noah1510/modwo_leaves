@@ -8,7 +8,7 @@
 #if !defined(Magick_SecurityPolicy_header)
 #define Magick_SecurityPolicy_header
 
-#include "Magick++/Include.h"
+#include "../Magick++/Include.h"
 #include <string>
 
 namespace Magick

@@ -18,8 +18,8 @@
 #ifndef MAGICKCORE_GEM_H
 #define MAGICKCORE_GEM_H
 
-#include "MagickCore/fx.h"
-#include "MagickCore/random_.h"
+#include "../MagickCore/fx.h"
+#include "../MagickCore/random_.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {
