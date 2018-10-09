@@ -12,16 +12,17 @@ using namespace std;
 
 
 const int BILDGROESSE = 256;
+const int ANZAHLVECS = 100;
 
 
 int main() {
 
 	int mode = 0;
 	string filename;
-	static int pgm [BILDGROESSE*BILDGROESSE];
-	int* point;
-	int err = 0;
+	static int pgm [BILDGROESSE*BILDGROESSE];int* point;
+    static int vecs [ANZAHLVECS];
 
+	int err = 0;
 	do{
 	//std::vector< std::vector<int> > img =  convertImage("test");
 		cout << "Waehlen die ihren modus" << endl;
