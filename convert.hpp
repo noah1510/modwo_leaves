@@ -2,10 +2,12 @@
 #include <fstream>
 #include <string>
 
+#include "magick/Magick++.h"
+
 using namespace std;
 
 //const int BILDGROESSE = 256;
 
-int convimg (string path, int* output);
+int convgrayscale (string path, int* output);
 
-//vector < vector <int> > convertImage(string bob);
+int convpng (string path, int* output);
