@@ -47,3 +47,52 @@ int convpng (string path, int* output){
 
     
 }
+
+int getimage(string path, int* output, bool is_colored){
+
+    if(!is_colored){
+        //get File
+        string line;
+        ifstream getSize(path);
+        if(getSize.is_open){
+            int counter = 0;
+            while(getline (getSize, line)){
+                if(counter>3) {
+                    break;
+                }
+                else if(counter=2){
+                    int pos_space = line.find(" ");
+                    int width = stoi(line.substr(0,(pos_space-1)));
+                    int height = stoi(line.substr((pos_space + 1), (line.length()-pos_space - 1)));
+                }
+                counter++;
+            }
+        }
+        else{
+            return 1;
+        }
+        getSize.close();
+
+        ifstream imageget (path);
+        if (imageget.is_open() ) {
+            int counter = 0;
+            while ( getline (imageget, line)) {
+                if(counter>3) {
+                    *(output + counter - 4) = stoi(line);
+                }
+                counter++;           
+            }
+            imageget.close();
+            return 0;
+        }
+        else{
+            return 1;
+        }
+    
+        
+    }
+    else{
+
+
+    }
+}
