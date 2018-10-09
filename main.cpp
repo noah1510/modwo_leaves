@@ -12,6 +12,7 @@ using namespace std;
 
 
 const int BILDGROESSE = 256;
+const int ANZAHLVECS = 100;
 
 
 int main() {
@@ -19,6 +20,7 @@ int main() {
 	//std::vector< std::vector<int> > img =  convertImage("test");
 	string filename;
 	static int pgm [BILDGROESSE*BILDGROESSE];
+    static int vecs [ANZAHLVECS];
 
 	int err = 0;
 	do{
