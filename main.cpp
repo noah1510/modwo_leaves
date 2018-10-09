@@ -6,6 +6,8 @@
 #include "convert.cpp"
 #include "schwerpunkt.hpp"
 #include "schwerpunkt.cpp"
+#include "vektoren.hpp"
+#include "vektoren.cpp"
 
 
 using namespace std;
@@ -19,7 +21,8 @@ int main() {
 
 	int mode = 0;
 	string filename;
-	static int pgm [BILDGROESSE*BILDGROESSE];int* point;
+	static int pgm [BILDGROESSE*BILDGROESSE];
+	int* point;
     static int vecs [ANZAHLVECS];
 
 	int err = 0;
@@ -34,10 +37,12 @@ int main() {
 		cin >> mode;
 
 		switch(mode){
+			//Beenden
 			case(0):
 				cout << "Programm wird beendet" << endl;
 				break;
 
+			//Greyscale
 			case(1):		
 
 				do{
@@ -56,6 +61,7 @@ int main() {
 				cout << "\nSchwerpunkt x:" << *(point) << " , y:" << *(point+1) << "\n" << endl;
 				break;
 
+			// Farbbild
 			case(2):
 				do{
 					cout << "Geben sie den Dateinamen ein." << endl;
@@ -71,15 +77,27 @@ int main() {
 				point = schwerpunkt(pgm, BILDGROESSE);
 
 				cout << "\nSchwerpunkt x:" << *(point) << " , y:" << *(point+1) << "\n" << endl;
+
+				cout << vektoren(vecs,pgm,point,BILDGROESSE,ANZAHLVECS);
+
 				break;
 
+			//testmodus
 			case(3):
 				err = convgrayscale("sample.pgm", pgm);
 				point = schwerpunkt(pgm, BILDGROESSE);
 
 				cout << "\nSchwerpunkt x:" << *(point) << " , y:" << *(point+1) << "\n" << endl;
+				
+				cout << vektoren(vecs,pgm,point,BILDGROESSE,ANZAHLVECS);
+
+				for(int i = 0; i < ANZAHLVECS; i++){
+					cout << *(vecs + i) << ", ";
+				}
+				cout << endl;
 				break;
 
+			//ungültige fälle
 			default:
 				cout << "falsche Eingabe!" << endl;
 				break;
