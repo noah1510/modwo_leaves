@@ -14,7 +14,7 @@ using namespace std;
 
 
 const int BILDGROESSE = 256;
-const int ANZAHLVECS = 100;
+const int ANZAHLVECS = 400;
 
 
 int main() {

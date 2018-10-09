@@ -14,11 +14,15 @@ const float WURZEL2 = sqrt(2);
 
 int vektoren(float* laengen, int* arr_img, int* point, int bildgroesse, int anzahlvektoren){
     //alle Vektoren erstellen
+
+    //String für .csv Datei
+    string csv = "angle(rad); distance \n";
     
     for (int i = 0; i<anzahlvektoren; i++){
-        float vecA = sin(6.28f/anzahlvektoren*i);
-        float vecB = cos(6.28f/anzahlvektoren*i);
+        float vecA = sin(6.28318f/anzahlvektoren*i);
+        float vecB = cos(6.28318f/anzahlvektoren*i);
         //cout << "vectorA:" << vecA << ", vectorB:" << vecB << endl;
+        
         for(int j = 0; true; j++){
             int pos_x = round(vecA * j + *(point + 1));
             int pos_y = round(vecB * j) + *(point);
@@ -50,11 +54,15 @@ int vektoren(float* laengen, int* arr_img, int* point, int bildgroesse, int anza
                 //cout << "i:" << i << ", dist:" << *(laengen + i) << ", j:" << j << ", dx:" << delta_x << ", dy:" << delta_y << endl;
                 break;
             }
-            
-            
-        }
+        }   
+        csv = csv + to_string(6.28318f/anzahlvektoren*i) + "; " +  to_string( *(laengen + i)) + "\n";   
         
         
+    ofstream csvwriter;
+    csvwriter.open ("result.csv");
+    csvwriter << csv;
+    csvwriter.close();
+
     }
     return 0;
 }
