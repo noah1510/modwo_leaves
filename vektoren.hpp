@@ -11,6 +11,6 @@
 
 #include <stdio.h>
 
-int* vektoren(int* arr_img, int* vektoren, int bildgroesse, int anzahlvektoren)
+int* vektoren(int* arr_img, int* point, int bildgroesse, int anzahlvektoren);
 
 #endif /* vektoren_hpp */
