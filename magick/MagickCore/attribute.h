@@ -18,8 +18,8 @@
 #ifndef MAGICKCORE_ATTRIBUTE_H
 #define MAGICKCORE_ATTRIBUTE_H
 
-#include "MagickCore/image.h"
-#include "MagickCore/exception.h"
+#include "../MagickCore/image.h"
+#include "../MagickCore/exception.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

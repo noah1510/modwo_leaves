@@ -18,8 +18,8 @@
 #ifndef MAGICKCORE_NT_BASE_H
 #define MAGICKCORE_NT_BASE_H
 
-#include "MagickCore/exception.h"
-#include "MagickCore/geometry.h"
+#include "../MagickCore/exception.h"
+#include "../MagickCore/geometry.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

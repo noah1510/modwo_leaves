@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_PIXEL_H
 #define MAGICKCORE_PIXEL_H
 
-#include "MagickCore/colorspace.h"
+#include "../MagickCore/colorspace.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_COMPARE_H
 #define MAGICKCORE_COMPARE_H
 
-#include "MagickCore/image.h"
+#include "../MagickCore/image.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

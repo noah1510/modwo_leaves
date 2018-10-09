@@ -22,7 +22,7 @@
 extern "C" {
 #endif
 
-#include "MagickCore/pixel.h"
+#include "../MagickCore/pixel.h"
 
 typedef struct _StreamInfo
   StreamInfo;

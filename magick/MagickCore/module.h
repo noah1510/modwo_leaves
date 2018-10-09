@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_MODULE_H
 #define MAGICKCORE_MODULE_H
 
-#include "MagickCore/version.h"
+#include "../MagickCore/version.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

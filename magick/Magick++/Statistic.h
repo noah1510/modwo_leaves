@@ -8,7 +8,7 @@
 #if !defined (Magick_ChannelMoments_header)
 #define Magick_ChannelMoments_header
 
-#include "Magick++/Include.h"
+#include "../Magick++/Include.h"
 #include <vector>
 
 namespace Magick

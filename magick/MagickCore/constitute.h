@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_CONSTITUTE_H
 #define MAGICKCORE_CONSTITUTE_H
 
-#include "MagickCore/pixel.h"
+#include "../MagickCore/pixel.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

@@ -18,9 +18,9 @@
 #ifndef MAGICKCORE_EXCEPTION_PRIVATE_H
 #define MAGICKCORE_EXCEPTION_PRIVATE_H
 
-#include "MagickCore/log.h"
-#include "MagickCore/magick.h"
-#include "MagickCore/string_.h"
+#include "../MagickCore/log.h"
+#include "../MagickCore/magick.h"
+#include "../MagickCore/string_.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

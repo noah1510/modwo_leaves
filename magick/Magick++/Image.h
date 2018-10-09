@@ -9,16 +9,16 @@
 #if !defined(Magick_Image_header)
 #define Magick_Image_header
 
-#include "Magick++/Include.h"
+#include "../Magick++/Include.h"
 #include <string>
 #include <list>
-#include "Magick++/Blob.h"
-#include "Magick++/Color.h"
-#include "Magick++/Drawable.h"
-#include "Magick++/Exception.h"
-#include "Magick++/Geometry.h"
-#include "Magick++/Statistic.h"
-#include "Magick++/TypeMetric.h"
+#include "../Magick++/Blob.h"
+#include "../Magick++/Color.h"
+#include "../Magick++/Drawable.h"
+#include "../Magick++/Exception.h"
+#include "../Magick++/Geometry.h"
+#include "../Magick++/Statistic.h"
+#include "../Magick++/TypeMetric.h"
 
 namespace Magick
 {

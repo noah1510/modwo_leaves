@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_MAGICK_TYPE_H
 #define MAGICKCORE_MAGICK_TYPE_H
 
-#include "MagickCore/magick-config.h"
+#include "../MagickCore/magick-config.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_LAYER_H
 #define MAGICKCORE_LAYER_H
 
-#include "MagickCore/composite.h"
+#include "../MagickCore/composite.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

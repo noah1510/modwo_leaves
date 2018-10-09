@@ -19,11 +19,11 @@
 #define MAGICKCORE_COMPOSITE_PRIVATE_H
 
 
-#include "MagickCore/color.h"
-#include "MagickCore/image.h"
-#include "MagickCore/image-private.h"
-#include "MagickCore/pixel-accessor.h"
-#include "MagickCore/pixel-private.h"
+#include "../MagickCore/color.h"
+#include "../MagickCore/image.h"
+#include "../MagickCore/image-private.h"
+#include "../MagickCore/pixel-accessor.h"
+#include "../MagickCore/pixel-private.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

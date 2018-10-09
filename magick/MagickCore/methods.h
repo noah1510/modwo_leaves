@@ -15,7 +15,7 @@
 
   MagickCore API methods prefix.
 
-  nm -p MagickCore/.libs/libMagickCore-7.Q16HDRI.a | grep ' T ' | egrep -vi '(Magick)|(lt_)' | \
+  nm -p ../MagickCore/.libs/libMagickCore-7.Q16HDRI.a | grep ' T ' | egrep -vi '(Magick)|(lt_)' | \
      egrep -v '(MagickError)|(MagickFatalError)|(MagickWarning)|(ThrowException)' | \
     awk '{ printf("#define %s  PrependMagickMethod(%s)\n", $3, $3); }' | sort
 */

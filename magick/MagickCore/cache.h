@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_CACHE_H
 #define MAGICKCORE_CACHE_H
 
-#include "MagickCore/blob.h"
+#include "../MagickCore/blob.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

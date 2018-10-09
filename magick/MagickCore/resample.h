@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_RESAMPLE_H
 #define MAGICKCORE_RESAMPLE_H
 
-#include "MagickCore/cache-view.h"
+#include "../MagickCore/cache-view.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_MORPHOLOGY_H
 #define MAGICKCORE_MORPHOLOGY_H
 
-#include "MagickCore/geometry.h"
+#include "../MagickCore/geometry.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

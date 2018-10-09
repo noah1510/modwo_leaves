@@ -18,7 +18,7 @@
 #ifndef _MAGICK_MORPHOLOGY_PRIVATE_H
 #define _MAGICK_MORPHOLOGY_PRIVATE_H
 
-#include "MagickCore/morphology.h"
+#include "../MagickCore/morphology.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

@@ -18,8 +18,8 @@
 #ifndef MAGICKCORE_POLICY_H
 #define MAGICKCORE_POLICY_H
 
-#include "MagickCore/pixel.h"
-#include "MagickCore/exception.h"
+#include "../MagickCore/pixel.h"
+#include "../MagickCore/exception.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

@@ -26,7 +26,7 @@ extern "C" {
 #if !defined(MAGICKWAND_CONFIG_H)
 # define MAGICKWAND_CONFIG_H
 # if !defined(vms) && !defined(macintosh)
-#  include "MagickCore/magick-config.h"
+#  include "../MagickCore/magick-config.h"
 # else
 #  include "magick-config.h"
 # endif
@@ -75,29 +75,29 @@ extern "C" {
 typedef struct _MagickWand
   MagickWand;
 
-#include "MagickWand/method-attribute.h"
-#include "MagickCore/MagickCore.h"
-#include "MagickWand/animate.h"
-#include "MagickWand/compare.h"
-#include "MagickWand/composite.h"
-#include "MagickWand/conjure.h"
-#include "MagickWand/convert.h"
-#include "MagickWand/deprecate.h"
-#include "MagickWand/display.h"
-#include "MagickWand/drawing-wand.h"
-#include "MagickWand/identify.h"
-#include "MagickWand/import.h"
-#include "MagickWand/wandcli.h"
-#include "MagickWand/operation.h"
-#include "MagickWand/magick-cli.h"
-#include "MagickWand/magick-property.h"
-#include "MagickWand/magick-image.h"
-#include "MagickWand/mogrify.h"
-#include "MagickWand/montage.h"
-#include "MagickWand/pixel-iterator.h"
-#include "MagickWand/pixel-wand.h"
-#include "MagickWand/stream.h"
-#include "MagickWand/wand-view.h"
+#include "../MagickWand/method-attribute.h"
+#include "../MagickCore/MagickCore.h"
+#include "../MagickWand/animate.h"
+#include "../MagickWand/compare.h"
+#include "../MagickWand/composite.h"
+#include "../MagickWand/conjure.h"
+#include "../MagickWand/convert.h"
+#include "../MagickWand/deprecate.h"
+#include "../MagickWand/display.h"
+#include "../MagickWand/drawing-wand.h"
+#include "../MagickWand/identify.h"
+#include "../MagickWand/import.h"
+#include "../MagickWand/wandcli.h"
+#include "../MagickWand/operation.h"
+#include "../MagickWand/magick-cli.h"
+#include "../MagickWand/magick-property.h"
+#include "../MagickWand/magick-image.h"
+#include "../MagickWand/mogrify.h"
+#include "../MagickWand/montage.h"
+#include "../MagickWand/pixel-iterator.h"
+#include "../MagickWand/pixel-wand.h"
+#include "../MagickWand/stream.h"
+#include "../MagickWand/wand-view.h"
 
 extern WandExport char
   *MagickGetException(const MagickWand *,ExceptionType *);

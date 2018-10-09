@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_RANDOM__H
 #define MAGICKCORE_RANDOM__H
 
-#include "MagickCore/string_.h"
+#include "../MagickCore/string_.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

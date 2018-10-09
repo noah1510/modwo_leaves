@@ -18,8 +18,8 @@
 #ifndef MAGICKWAND_PIXEL_ITERATOR_H
 #define MAGICKWAND_PIXEL_ITERATOR_H
 
-#include "MagickWand/MagickWand.h"
-#include "MagickWand/pixel-wand.h"
+#include "../MagickWand/MagickWand.h"
+#include "../MagickWand/pixel-wand.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

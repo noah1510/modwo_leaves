@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_EFFECT_H
 #define MAGICKCORE_EFFECT_H
 
-#include "MagickCore/morphology.h"
+#include "../MagickCore/morphology.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

@@ -11,7 +11,7 @@
 #if !defined (Magick_Geometry_header)
 #define Magick_Geometry_header
 
-#include "Magick++/Include.h"
+#include "../Magick++/Include.h"
 #include <string>
 
 namespace Magick

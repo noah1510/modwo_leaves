@@ -23,7 +23,7 @@ extern "C" {
 #endif
 
 #include <stdarg.h>
-#include "MagickCore/semaphore.h"
+#include "../MagickCore/semaphore.h"
 
 typedef struct _DelegateInfo
 {

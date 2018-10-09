@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_PROFILE_H
 #define MAGICKCORE_PROFILE_H
 
-#include "MagickCore/string_.h"
+#include "../MagickCore/string_.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

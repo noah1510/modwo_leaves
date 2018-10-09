@@ -18,14 +18,14 @@
 #if !defined(Magick_Drawable_header)
 #define Magick_Drawable_header
 
-#include "Magick++/Include.h"
+#include "../Magick++/Include.h"
 
 #include <functional>
 #include <string>
 #include <vector>
 #include <utility>
-#include "Magick++/Color.h"
-#include "Magick++/Geometry.h"
+#include "../Magick++/Color.h"
+#include "../Magick++/Geometry.h"
 
 #if defined(MagickDLLExplicitTemplate)
 #  if defined(MAGICK_PLUSPLUS_IMPLEMENTATION)

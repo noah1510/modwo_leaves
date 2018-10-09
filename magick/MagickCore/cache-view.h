@@ -18,7 +18,7 @@
 #ifndef MAGICKCORE_CACHE_VIEW_H
 #define MAGICKCORE_CACHE_VIEW_H
 
-#include "MagickCore/pixel.h"
+#include "../MagickCore/pixel.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {

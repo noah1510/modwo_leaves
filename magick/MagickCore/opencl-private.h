@@ -21,9 +21,9 @@ MagickCore OpenCL private methods.
 /*
 Include declarations.
 */
-#include "MagickCore/studio.h"
-#include "MagickCore/opencl.h"
-#include "MagickCore/thread_.h"
+#include "../MagickCore/studio.h"
+#include "../MagickCore/opencl.h"
+#include "../MagickCore/thread_.h"
 
 #if defined(__cplusplus) || defined(c_plusplus)
 extern "C" {
