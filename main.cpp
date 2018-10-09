@@ -62,6 +62,9 @@ int main() {
 				
 				cout << vektoren(vecs,pgm,point,BILDGROESSE,ANZAHLVECS) << endl;
 
+				
+				cout << normVecs(vecs, ANZAHLVECS) << endl;
+
 				for(int i = 0; i < ANZAHLVECS; i++){
 					cout << *(vecs + i) << ", ";
 				}

@@ -15,4 +15,6 @@
 
 int vektoren(float* laengen, int* arr_img, int* point, int bildgroesse, int anzahlvektoren);
 
+int normVecs(float* arr_vecs, int anzahlvektoren);
+
 #endif /* vektoren_hpp */
