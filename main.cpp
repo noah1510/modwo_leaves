@@ -23,7 +23,7 @@ int main() {
 	string filename;
 	static int pgm [BILDGROESSE*BILDGROESSE];
 	int* point;
-    static int vecs [ANZAHLVECS];
+    static float vecs [ANZAHLVECS];
 
 	int err = 0;
 	do{
@@ -59,6 +59,14 @@ int main() {
 				point = schwerpunkt(pgm, BILDGROESSE);
 
 				cout << "\nSchwerpunkt x:" << *(point) << " , y:" << *(point+1) << "\n" << endl;
+				
+				cout << vektoren(vecs,pgm,point,BILDGROESSE,ANZAHLVECS) << endl;
+
+				for(int i = 0; i < ANZAHLVECS; i++){
+					cout << *(vecs + i) << ", ";
+				}
+				cout << endl;
+				
 				break;
 
 			// Farbbild
@@ -78,7 +86,12 @@ int main() {
 
 				cout << "\nSchwerpunkt x:" << *(point) << " , y:" << *(point+1) << "\n" << endl;
 
-				cout << vektoren(vecs,pgm,point,BILDGROESSE,ANZAHLVECS);
+				cout << vektoren(vecs,pgm,point,BILDGROESSE,ANZAHLVECS) << endl;
+
+				for(int i = 0; i < ANZAHLVECS; i++){
+					cout << *(vecs + i) << ", ";
+				}
+				cout << endl;
 
 				break;
 
@@ -89,7 +102,7 @@ int main() {
 
 				cout << "\nSchwerpunkt x:" << *(point) << " , y:" << *(point+1) << "\n" << endl;
 				
-				cout << vektoren(vecs,pgm,point,BILDGROESSE,ANZAHLVECS);
+				cout << vektoren(vecs,pgm,point,BILDGROESSE,ANZAHLVECS) << endl;
 
 				for(int i = 0; i < ANZAHLVECS; i++){
 					cout << *(vecs + i) << ", ";
