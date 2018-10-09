@@ -50,8 +50,14 @@ int convpng (string path, int* output){
 
 int getimage(string path, int* output, bool is_colored){
 
-    if(!is_colored){
-        //get File
+    
+}
+
+/*if(!is_colored){
+        int width;
+        int height;
+        
+        //Bildgroesse bestimmen
         string line;
         ifstream getSize(path);
         if(getSize.is_open){
@@ -62,8 +68,8 @@ int getimage(string path, int* output, bool is_colored){
                 }
                 else if(counter=2){
                     int pos_space = line.find(" ");
-                    int width = stoi(line.substr(0,(pos_space-1)));
-                    int height = stoi(line.substr((pos_space + 1), (line.length()-pos_space - 1)));
+                    width = stoi(line.substr(0,(pos_space-1)));
+                    height = stoi(line.substr((pos_space + 1), (line.length()-pos_space - 1)));
                 }
                 counter++;
             }
@@ -73,12 +79,16 @@ int getimage(string path, int* output, bool is_colored){
         }
         getSize.close();
 
+        //Bild in Array umwandeln
+
+        int unresized[width*height];
+
         ifstream imageget (path);
         if (imageget.is_open() ) {
             int counter = 0;
             while ( getline (imageget, line)) {
                 if(counter>3) {
-                    *(output + counter - 4) = stoi(line);
+                    unresized[counter-4] = stoi(line);
                 }
                 counter++;           
             }
@@ -88,11 +98,12 @@ int getimage(string path, int* output, bool is_colored){
         else{
             return 1;
         }
-    
+        
         
     }
     else{
 
 
     }
-}
+    */
+   
