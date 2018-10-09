@@ -8,7 +8,8 @@
 #include "schwerpunkt.cpp"
 #include "vektoren.hpp"
 #include "vektoren.cpp"
-
+#include "symmetry.hpp"
+#include "symmetry.cpp"
 
 using namespace std;
 
@@ -28,7 +29,7 @@ int main() {
 	int err = 0;
 	do{
 	//std::vector< std::vector<int> > img =  convertImage("test");
-		cout << "Waehlen die ihren modus" << endl;
+		cout << "Waehlen Sie Ihren Modus" << endl;
 		cout << "0 - programm beenden" << endl;
 		cout << "1 - grayscale (.pgm)" << endl;
 		cout << "2 - farbbild (.png)" << endl;
@@ -42,11 +43,11 @@ int main() {
 				cout << "Programm wird beendet" << endl;
 				break;
 
-			//Greyscale
+			//Grayscale
 			case(1):		
 
 				do{
-					cout << "Geben sie den Dateinamen ein." << endl;
+					cout << "Geben Sie den Dateinamen ein." << endl;
 
 					cin >> filename;
 	
@@ -65,17 +66,25 @@ int main() {
 				
 				cout << normVecs(vecs, ANZAHLVECS) << endl;
 
+				float* abw;
+				int* sym;
+
+				cout << checkSymmetry(ANZAHLVECS, abw, sym, vecs) << endl;
+
+				cout << "Abw: " << *abw << ", Achse: " << *sym << endl;
+
 				for(int i = 0; i < ANZAHLVECS; i++){
 					cout << *(vecs + i) << ", ";
 				}
 				cout << endl;
+
 				
 				break;
 
 			// Farbbild
 			case(2):
 				do{
-					cout << "Geben sie den Dateinamen ein." << endl;
+					cout << "Geben Sie den Dateinamen ein." << endl;
 
 					cin >> filename;
 	
