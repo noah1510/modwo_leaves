@@ -2,15 +2,17 @@
 
 using namespace std;
 
-int checkSymmetry(int anzahlvektoren, float* abweichung, int* achse, float* vecs){
+int checkSymmetry(int anzahlvektoren, float* abweichung, int* achse, float* vecs, float* ruendlichkeit){
 
     int pos_min;
     float abw_min = 0;
     bool isFirst = true;
+    float sum_abw_sum = 0;
+
     for(int i = 0; i < (anzahlvektoren/2); i++){
         float abw_sum = 0;
         for(int j = 0; j < (anzahlvektoren/2); j++){
-            abw_sum += pow((*(vecs+(i+j)%400)-*(vecs+(i+400-j)%400)), 16);
+            abw_sum += pow((*(vecs+(i+j)%400)-*(vecs+(i+400-j)%400)), 8);
         }
         if(abw_sum < abw_min ){
             abw_min = abw_sum;
@@ -22,9 +24,11 @@ int checkSymmetry(int anzahlvektoren, float* abweichung, int* achse, float* vecs
             isFirst = false;
         }
         cout << i << " " << abw_sum <<endl;
+        sum_abw_sum += abw_sum;
     }
     *(achse) = pos_min;
     *(abweichung) = abw_min;
+    *(ruendlichkeit) = sum_abw_sum / (anzahlvektoren/2);
     return 0;
 }
 

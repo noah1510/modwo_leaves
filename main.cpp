@@ -68,10 +68,11 @@ int main() {
 
 				float* abw;
 				int* sym;
+				float* rund;
 
-				cout << checkSymmetry(ANZAHLVECS, abw, sym, vecs) << endl;
+				cout << checkSymmetry(ANZAHLVECS, abw, sym, vecs, rund) << endl;
 
-				cout << "Abw: " << *abw << ", Achse: " << *sym << endl;
+				cout << "Abw: " << *abw << ", Achse: " << *sym << ", Ruendlichkeit: " << *rund << endl;
 
 				for(int i = 0; i < ANZAHLVECS; i++){
 					cout << *(vecs + i) << ", ";
