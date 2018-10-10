@@ -35,15 +35,16 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
                 cout << line.find(",")<<endl;
                 x = stoi(line.substr(0,line.find(",")));
                 cout << x << endl;
-                y = stoi(line.substr(line.find(","),line.find(" ")-line.find(",")));
+                y = stoi(line.substr(line.find(",")+1,line.length()-line.find(",")));
                 cout << y << endl;
 
                 if(x == (int)(2.5*anzahlvecs)+3 && y == anzahl_blattsorten){
                     inited = true;
                     cout << "format is right!" << endl;
-                    break;
+                    counter++;
                 }else{
                     cout << "wrong format!" << endl;
+                    break;
                 }
                 
             }
@@ -67,9 +68,9 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
     string out;
     ofstream csvWrite (path + "/matrix.leaves");
     out += to_string((int)(2.5*anzahlvecs)+3);
-    out += ",";
+    out += ", ";
     out += to_string(anzahl_blattsorten);
-    out += " \n";
+    out += "\n";
     for(int i=0; i<anzahl_blattsorten; i++){
         for(int j=0; j<(int)(2.5*anzahlvecs)+2; j++){
             out += to_string(matrix[i][j]);
