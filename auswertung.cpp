@@ -33,8 +33,10 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
                 int x,y;
 
                 cout << line.find(",")<<endl;
-                x = stoi(line.substr(0,line.find(",",0)-1));
+                x = stoi(line.substr(0,line.find(",")));
+                cout << x << endl;
                 y = stoi(line.substr(line.find(","),line.find(" ")-line.find(",")));
+                cout << y << endl;
 
                 if(x == (int)(2.5*anzahlvecs)+3 && y == anzahl_blattsorten){
                     inited = true;
@@ -60,20 +62,25 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
     }
 
 
+
     //output in matrix.leaves
     string out;
     ofstream csvWrite (path + "/matrix.leaves");
-    out += (int)(2.5*anzahlvecs)+3;
-    out += "," + anzahl_blattsorten;
+    out += to_string((int)(2.5*anzahlvecs)+3);
+    out += ",";
+    out += to_string(anzahl_blattsorten);
     out += " \n";
-    for(int i=0; i>anzahl_blattsorten; i++){
-        for(int j=0; j>(int)(2.5*anzahlvecs)+2; j++){
-            out += matrix[i][j];
+    for(int i=0; i<anzahl_blattsorten; i++){
+        for(int j=0; j<(int)(2.5*anzahlvecs)+2; j++){
+            out += to_string(matrix[i][j]);
             out += ", ";
         }
-        out += matrix[i][(int)(2.5*anzahlvecs)+2];
+        out += to_string(matrix[i][(int)(2.5*anzahlvecs)+2]);
         out += "\n";
     }
+
+    cout << out << endl;
+
     csvWrite << out;
     csvWrite.close();
 
