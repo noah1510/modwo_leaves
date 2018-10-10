@@ -26,7 +26,7 @@ int convgrayscale (string path, int* output){
     
 }
 
-int convpng (string path, int* output){
+int convcsv (string path, int* output){
     
     string line;
 
@@ -34,10 +34,16 @@ int convpng (string path, int* output){
     if (imageget.is_open() ) {
         int counter = 0;
         while ( getline (imageget, line)) {
-            if(counter>3) {
-                *(output + counter - 4) = stoi(line);
+            int pos_str = 0;
+            for(int i = 0; i < 255; i++){
+                
+
+                *(output + i) = stoi( line.substr(pos_str, line.find(",")-pos_str));
+
+                pos_str = line.find(",")+1;
+
             }
-            counter++;           
+            *(output + 255) = stoi( line.substr(pos_str, line.find(",")-pos_str));    
         }
         imageget.close();
         return 0;
@@ -106,4 +112,3 @@ int getimage(string path, int* output, bool is_colored){
 
     }
     */
-   

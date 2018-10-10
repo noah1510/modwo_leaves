@@ -25,6 +25,9 @@ int main() {
 	static int pgm [BILDGROESSE*BILDGROESSE];
 	int* point;
     static float vecs [ANZAHLVECS];
+	float* abw;
+	int* sym;
+	float* rund;
 
 	int err = 0;
 	do{
@@ -66,9 +69,7 @@ int main() {
 				
 				cout << normVecs(vecs, ANZAHLVECS) << endl;
 
-				float* abw;
-				int* sym;
-				float* rund;
+				
 
 				cout << checkSymmetry(ANZAHLVECS, abw, sym, vecs, rund) << endl;
 
@@ -89,7 +90,7 @@ int main() {
 
 					cin >> filename;
 	
-					err = convgrayscale(filename+".png", pgm);
+					err = convcsv(filename+".csv", pgm);
 					if(err != 0){
 						cout << "Datei nicht vorhanden!" << endl;
 					}
@@ -98,14 +99,24 @@ int main() {
 				point = schwerpunkt(pgm, BILDGROESSE);
 
 				cout << "\nSchwerpunkt x:" << *(point) << " , y:" << *(point+1) << "\n" << endl;
-
+				
 				cout << vektoren(vecs,pgm,point,BILDGROESSE,ANZAHLVECS) << endl;
+
+				
+				cout << normVecs(vecs, ANZAHLVECS) << endl;
+
+				
+
+				cout << checkSymmetry(ANZAHLVECS, abw, sym, vecs, rund) << endl;
+
+				cout << "Abw: " << *abw << ", Achse: " << *sym << ", Ruendlichkeit: " << *rund << endl;
 
 				for(int i = 0; i < ANZAHLVECS; i++){
 					cout << *(vecs + i) << ", ";
 				}
 				cout << endl;
 
+				
 				break;
 
 			//testmodus
