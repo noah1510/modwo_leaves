@@ -10,12 +10,16 @@
 #include "vektoren.cpp"
 #include "symmetry.hpp"
 #include "symmetry.cpp"
+#include "auswertung.hpp"
+#include "auswertung.cpp"
 
 using namespace std;
 
 
 const int BILDGROESSE = 256;
 const int ANZAHLVECS = 400;
+const int BLATTSORTEN = 7;
+const float LERNINGRATE = 0.5f;
 
 
 int main() {
@@ -36,7 +40,7 @@ int main() {
 		cout << "0 - programm beenden" << endl;
 		cout << "1 - grayscale (.pgm)" << endl;
 		cout << "2 - farbbild (.png)" << endl;
-		cout << "3 - testmodus" << endl;
+		cout << "3 - training" << endl;
 
 		cin >> mode;
 
@@ -119,19 +123,12 @@ int main() {
 				
 				break;
 
-			//testmodus
+			//training
 			case(3):
-				err = convgrayscale("sample.pgm", pgm);
-				point = schwerpunkt(pgm, BILDGROESSE);
-
-				cout << "\nSchwerpunkt x:" << *(point) << " , y:" << *(point+1) << "\n" << endl;
-				
-				cout << vektoren(vecs,pgm,point,BILDGROESSE,ANZAHLVECS) << endl;
-
-				for(int i = 0; i < ANZAHLVECS; i++){
-					cout << *(vecs + i) << ", ";
-				}
-				cout << endl;
+				err = auswertung(ANZAHLVECS,BILDGROESSE,LERNINGRATE,"trainingData",BLATTSORTEN);
+				if(err != 0){
+					cout << "Fehler!" << endl;
+				};
 				break;
 
 			//ungültige fälle
