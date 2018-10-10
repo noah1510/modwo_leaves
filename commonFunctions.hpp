@@ -12,7 +12,7 @@
 #include <stdio.h>
 #endif /* commonFunctions_hpp */
 using namespace std;
-float durchschnitt(float* arr, int laenge);
+float durchschnitt(float* arr, int* laenge);
 float standartabweichung(float* arr, int laenge); //ggf. ebenfalls durchschnitt übergeben für bessere performance?
 int ableitung(float* arr, int laenge, float* result);
 float bfrequenz(float* arr, int laenge);

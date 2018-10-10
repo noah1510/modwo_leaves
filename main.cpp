@@ -114,15 +114,12 @@ int main() {
 
                 cout << checkSymmetry(ANZAHLVECS, &abw, &sym, vecs, &rund) << endl;
 
-				cout << "Abw: " << abw << ", Achse: " << sym << ", Ruendlichkeit: " << rund << endl;
-
-                cout <<  bfrequenz(vecs, ANZAHLVECS) <<endl;
+				cout << "Abw: " << abw << ", Achse: " << sym << ", Ruendlichkeit: " << rund << endl <<endl;
                 
 				for(int i = 0; i < ANZAHLVECS; i++){
 					cout << *(vecs + i) << ", ";
 				}
 				cout << endl;
-
 				
 				break;
 

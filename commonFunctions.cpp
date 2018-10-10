@@ -8,6 +8,7 @@
 
 #include "commonFunctions.hpp"
 #include <math.h>
+#include <iostream>
 
 using namespace std;
 
@@ -16,21 +17,21 @@ float durchschnitt(float* arr, int laenge){
     for(int i=0; i < laenge; i++){
         sum += *(arr+i);
     }
-    return (sum / laenge);
+    return (float(sum) / float(laenge));
 }
 
 float standartabweichung(float* arr, int laenge){
     float av = durchschnitt(arr, laenge);
     float sum = 0;
-    for(int i=0; i<laenge; i++){
+    for(int i=0; i< laenge; i++){
         sum += pow((*(arr+i) - av),2);
     }
-    return (sum / laenge);
+    return (float(sum) / float(laenge));
 }
 
 int ableitung(float* arr, int laenge, float* result){
     float lastvalue = *(arr+laenge-1);
-    float* res = nullptr;
+    float res[laenge];
     for(int i = 0; i < laenge; i++){
         res[i] = *(arr+i) - lastvalue;
     }
@@ -40,14 +41,16 @@ int ableitung(float* arr, int laenge, float* result){
 
 float bfrequenz(float* arr, int laenge){
     int anzahlWechsel = 0;
+    float abl[laenge];
+    ableitung(arr, laenge, abl);
     bool lastVZ;
-    if(*(arr+laenge-1) < 0){
+    if(abl[laenge-1] < 0){
         lastVZ = false;
     }else{
         lastVZ = true;
     }
     for(int i=0; i<laenge; i++){
-        if(*(arr+i) < 0){
+        if(abl[i] < 0){
             if(lastVZ) anzahlWechsel++;
             lastVZ = false;
         }else{
@@ -55,6 +58,7 @@ float bfrequenz(float* arr, int laenge){
             lastVZ = true;
         }
     }
-    return (anzahlWechsel / laenge);
+    cout << anzahlWechsel << ";" << laenge << endl;
+    return (float(anzahlWechsel) / float(laenge));
 }
 
