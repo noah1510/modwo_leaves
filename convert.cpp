@@ -2,7 +2,6 @@
 
 using namespace std;
 
-using namespace Magick;
 
 int convgrayscale (string path, int* output){
     

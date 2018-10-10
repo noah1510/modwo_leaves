@@ -2,8 +2,6 @@
 #include <fstream>
 #include <string>
 
-#include "magick/Magick++.h"
-
 using namespace std;
 
 //const int BILDGROESSE = 256;
