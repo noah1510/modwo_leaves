@@ -3,16 +3,17 @@
 #include <math.h>
 
 #include "convert.hpp"
-//#include "convert.cpp"
+#include "convert.cpp"
 #include "schwerpunkt.hpp"
-//#include "schwerpunkt.cpp"
+#include "schwerpunkt.cpp"
 #include "vektoren.hpp"
-//#include "vektoren.cpp"
+#include "vektoren.cpp"
 #include "symmetry.hpp"
-//#include "symmetry.cpp"
+#include "symmetry.cpp"
 #include "auswertung.hpp"
-//#include "auswertung.cpp"
+#include "auswertung.cpp"
 #include "commonFunctions.hpp"
+#include "commonFunctions.cpp"
 
 using namespace std;
 
@@ -28,6 +29,7 @@ int main() {
 	int mode = 0;
 	string filename;
 	static int pgm [BILDGROESSE*BILDGROESSE];
+	static float sims [ANZAHLVECS/2];
 	int* point;
     static float vecs [ANZAHLVECS];
 	float abw;
@@ -76,7 +78,7 @@ int main() {
 
 				
 
-                cout << checkSymmetry(ANZAHLVECS, &abw, &sym, vecs, &rund) << endl;
+                cout << checkSymmetry(ANZAHLVECS, &abw, &sym, vecs, &rund, sims) << endl;
 
 				cout << "Abw: " << abw << ", Achse: " << sym << ", Ruendlichkeit: " << rund << endl;
 
@@ -112,7 +114,7 @@ int main() {
 
 				
 
-                cout << checkSymmetry(ANZAHLVECS, &abw, &sym, vecs, &rund) << endl;
+                cout << checkSymmetry(ANZAHLVECS, &abw, &sym, vecs, &rund, sims) << endl;
 
 				cout << "Abw: " << abw << ", Achse: " << sym << ", Ruendlichkeit: " << rund << endl <<endl;
                 

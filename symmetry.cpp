@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int checkSymmetry(int anzahlvektoren, float* abweichung, int* achse, float* vecs, float* ruendlichkeit){
+int checkSymmetry(int anzahlvektoren, float* abweichung, int* achse, float* vecs, float* ruendlichkeit, float* sims){
 
     int pos_min;
     float abw_min = 0;
@@ -24,6 +24,7 @@ int checkSymmetry(int anzahlvektoren, float* abweichung, int* achse, float* vecs
             isFirst = false;
         }
         cout << i << " " << abw_sum <<endl;
+        *(sims+i) = abw_sum;
         sum_abw_sum += abw_sum;
     }
     *(achse) = pos_min;

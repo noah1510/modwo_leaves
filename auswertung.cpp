@@ -62,6 +62,41 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
         }
     }
 
+    int sorten_counter[anzahl_blattsorten];
+
+    for(int i=0; i<anzahl_blattsorten*20; i++){
+        int path_random = (rand() % anzahl_blattsorten) + 1;
+        sorten_counter[path_random-1]++;
+
+        if(sorten_counter[path_random-1]<11){
+            int pgm [bildgroesse*bildgroesse];
+            int* point;
+            float vecs [anzahlvecs];
+            float sims [anzahlvecs/2];
+            float abl [anzahlvecs];
+            float abw;
+            int sym;
+	        float rund;
+
+            int err = convcsv(path + "/" + to_string(path_random) + ".csv", pgm);
+		    if(err != 0){
+			    cout << "Datei nicht vorhanden!" << endl;
+		    }
+
+            point = schwerpunkt(pgm, bildgroesse);
+
+            vektoren(vecs,pgm,point,bildgroesse,anzahlvecs);
+
+            normVecs(vecs, anzahlvecs);
+
+            checkSymmetry(anzahlvecs, &abw, &sym, vecs, &rund, sims);
+
+            ableitung(vecs, anzahlvecs, abl);
+        }
+
+    }
+
+
 
 
     //output in matrix.leaves
