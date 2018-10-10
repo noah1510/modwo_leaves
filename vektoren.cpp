@@ -10,6 +10,7 @@
 #include "vektoren.hpp"
 #include <math.h>
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 

@@ -10,9 +10,9 @@
 #define commonFunctions_hpp
 
 #include <stdio.h>
-#include <math.h>
 #endif /* commonFunctions_hpp */
+using namespace std;
 float durchschnitt(float* arr, int laenge);
 float standartabweichung(float* arr, int laenge); //ggf. ebenfalls durchschnitt übergeben für bessere performance?
 int ableitung(float* arr, int laenge, float* result);
-float frequenz(float* arr, int laenge);
+float bfrequenz(float* arr, int laenge);

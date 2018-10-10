@@ -55,7 +55,7 @@ int convcsv (string path, int* output){
 
 int getimage(string path, int* output, bool is_colored){
 
-    
+    return 0;
 }
 
 /*if(!is_colored){

@@ -7,7 +7,7 @@
 //
 
 #include "abgleich.hpp"
-#include "commonFunctions.cpp"
+#include "commonFunctions.hpp"
 using namespace std;
 
 int abweichung(float* laengen, float* laengen_example, int anzahlvektoren, int achse){

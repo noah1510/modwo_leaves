@@ -7,6 +7,7 @@
 //
 
 #include "commonFunctions.hpp"
+#include <math.h>
 
 using namespace std;
 
@@ -37,7 +38,7 @@ int ableitung(float* arr, int laenge, float* result){
     return 0;
 }
 
-float frequenz(float* arr, int laenge){
+float bfrequenz(float* arr, int laenge){
     int anzahlWechsel = 0;
     bool lastVZ;
     if(*(arr+laenge-1) < 0){

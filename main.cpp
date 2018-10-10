@@ -3,15 +3,16 @@
 #include <math.h>
 
 #include "convert.hpp"
-#include "convert.cpp"
+//#include "convert.cpp"
 #include "schwerpunkt.hpp"
-#include "schwerpunkt.cpp"
+//#include "schwerpunkt.cpp"
 #include "vektoren.hpp"
-#include "vektoren.cpp"
+//#include "vektoren.cpp"
 #include "symmetry.hpp"
-#include "symmetry.cpp"
+//#include "symmetry.cpp"
 #include "auswertung.hpp"
-#include "auswertung.cpp"
+//#include "auswertung.cpp"
+#include "commonFunctions.hpp"
 
 using namespace std;
 
@@ -29,9 +30,9 @@ int main() {
 	static int pgm [BILDGROESSE*BILDGROESSE];
 	int* point;
     static float vecs [ANZAHLVECS];
-	float* abw;
-	int* sym;
-	float* rund;
+	float abw;
+    int sym;
+	float rund;
 
 	int err = 0;
 	do{
@@ -75,9 +76,9 @@ int main() {
 
 				
 
-				cout << checkSymmetry(ANZAHLVECS, abw, sym, vecs, rund) << endl;
+                cout << checkSymmetry(ANZAHLVECS, &abw, &sym, vecs, &rund) << endl;
 
-				cout << "Abw: " << *abw << ", Achse: " << *sym << ", Ruendlichkeit: " << *rund << endl;
+				cout << "Abw: " << abw << ", Achse: " << sym << ", Ruendlichkeit: " << rund << endl;
 
 				for(int i = 0; i < ANZAHLVECS; i++){
 					cout << *(vecs + i) << ", ";
@@ -111,10 +112,12 @@ int main() {
 
 				
 
-				cout << checkSymmetry(ANZAHLVECS, abw, sym, vecs, rund) << endl;
+                cout << checkSymmetry(ANZAHLVECS, &abw, &sym, vecs, &rund) << endl;
 
-				cout << "Abw: " << *abw << ", Achse: " << *sym << ", Ruendlichkeit: " << *rund << endl;
+				cout << "Abw: " << abw << ", Achse: " << sym << ", Ruendlichkeit: " << rund << endl;
 
+                cout <<  bfrequenz(vecs, ANZAHLVECS) <<endl;
+                
 				for(int i = 0; i < ANZAHLVECS; i++){
 					cout << *(vecs + i) << ", ";
 				}
