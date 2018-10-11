@@ -66,6 +66,8 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
     for(int i=0; i< anzahl_blattsorten; i++){
         sorten_counter[i] = 0;
     }
+
+    string csv_Out;
     
     //cout << (0<anzahl_blattsorten*20) << endl;
     for(int i=0; i<anzahl_blattsorten*20; i++){
@@ -135,6 +137,34 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
                 cout << *(bernd_sims +j) << endl;
                 cout << *(bernd + j) << endl;
             }
+
+
+            //csv-datei anfügen
+
+            for(int j=0; j<anzahlvecs; j++){
+                csv_Out += to_string(*(bernd + j - 1));
+                csv_Out += "; ";
+            }
+
+            for(int j=0; j<anzahlvecs; j++){
+                csv_Out += to_string(*(abl + j));
+                csv_Out += "; ";
+            }
+
+            for(int j=0; j<anzahlvecs/2; j++){
+                csv_Out += to_string(*(bernd_sims + j));
+                csv_Out += "; ";
+            }
+
+            csv_Out += to_string(frequenz);
+            csv_Out += "; ";
+            csv_Out += to_string(abw*1000);
+            csv_Out += "; ";
+            csv_Out += to_string(rund);
+            csv_Out += "\n";
+
+
+
 
             //Werte mit Sigmoid in Input Vector schreiben
             for(int j=0; j<anzahlvecs; j++){
@@ -234,6 +264,11 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
 
     csvWrite << out;
     csvWrite.close();
+
+    ofstream csv_Write("data.csv");
+    csv_Write << csv_Out;
+    csv_Write.close();
+
 
     return 0;
 }
