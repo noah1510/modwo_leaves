@@ -22,6 +22,7 @@ const int BILDGROESSE = 256;
 const int ANZAHLVECS = 400;
 const int BLATTSORTEN = 4;
 const float LERNINGRATE = 0.5f;
+const int BILDMENGE = 15;
 
 
 int main() {
@@ -130,7 +131,7 @@ int main() {
 
             //training
             case(3):
-				err = auswertung(ANZAHLVECS,BILDGROESSE,LERNINGRATE,"trainingData",BLATTSORTEN, pgm, sims, vecs, abl, bernd, bernd_sims);
+				err = auswertung(ANZAHLVECS,BILDGROESSE,LERNINGRATE,"trainingData",BLATTSORTEN, pgm, sims, vecs, abl, bernd, bernd_sims, BILDMENGE, true);
                 if(err != 0){
                     cout << "Fehler!" << endl;
                 };

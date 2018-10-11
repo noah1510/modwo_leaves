@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int anzahl_blattsorten,  int* pgm, float* sims, float* vecs, float* abl, float* bernd, float* bernd_sims){
+int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int anzahl_blattsorten,  int* pgm, float* sims, float* vecs, float* abl, float* bernd, float* bernd_sims, int bildmenge, bool test){
 
     //variable init
     double matrix[(int)(2.5*anzahlvecs)+3][anzahl_blattsorten];
@@ -32,18 +32,18 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
                 
                 int x,y;
 
-                cout << line.find(",")<<endl;
+                //cout << line.find(",")<<endl;
                 x = stoi(line.substr(0,line.find(",")));
-                cout << x << endl;
+                //cout << x << endl;
                 y = stoi(line.substr(line.find(",")+1,line.length()-line.find(",")));
-                cout << y << endl;
+                //cout << y << endl;
 
                 if(x == (int)(2.5*anzahlvecs)+3 && y == anzahl_blattsorten){
                     inited = true;
-                    cout << "format is right!" << endl;
+                    //cout << "format is right!" << endl;
                     counter++;
                 }else{
-                    cout << "wrong format!" << endl;
+                    //cout << "wrong format!" << endl;
                     break;
                 }
                 
@@ -51,7 +51,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
         }
         csvGet.close();
     }else{
-        cout << "file not found" << endl;
+        //cout << "file not found" << endl;
     }
 
     if (!inited){
@@ -69,14 +69,18 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
 
     string csv_Out;
     
-    //cout << (0<anzahl_blattsorten*20) << endl;
-    for(int i=0; i<anzahl_blattsorten*20; i++){
-        //int path_random = (rand() % anzahl_blattsorten) + 1;
+    
+    for(int i=0; i<anzahl_blattsorten*bildmenge; i++){
         int path_random = 0;
-        sorten_counter[path_random]++;
-        //cout << sorten_counter[path_random-1] << endl;
-        //cout << (sorten_counter[path_random-1]<11) << endl;
-        if(sorten_counter[path_random]<10){
+        do {
+
+            path_random = (rand() % anzahl_blattsorten);
+
+        }while(sorten_counter[path_random]>= bildmenge);
+        
+        
+
+        if(true){
 
             /*
             int pgm [bildgroesse*bildgroesse];
@@ -97,14 +101,18 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
             double output[anzahl_blattsorten];
             double fehler[anzahl_blattsorten];
 
-            int err = convcsv(path + "/" + to_string(path_random) + ".csv", pgm); //error possible here!
+            int err = convcsv(path + "/" + to_string(path_random) + "/" + to_string(sorten_counter[path_random]) + ".csv", pgm); //error possible here!
 		    if(err != 0){
-			    cout << "Datei nicht vorhanden!" << endl;
+			    //cout << "Datei nicht vorhanden!" << endl;
 		    }
 
-            /*for(int j=0; j<256;j++){
-                cout << pgm[j] << endl;
-            }*/
+            cout << path + "/" + to_string(path_random) + "/" + to_string(sorten_counter[path_random]) << endl;
+
+            for(int j=0; j<256;j++){
+                cout << pgm[j+10000] << endl;
+            }
+
+            sorten_counter[path_random] +=1;
 
             point = schwerpunkt(pgm, bildgroesse);
 
@@ -115,7 +123,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
             checkSymmetry(anzahlvecs, &abw, &sym, vecs, &rund, sims);
 
             for(int j = 0; j < 20; j++){
-                cout << *(sims +j) << endl;
+                //cout << *(sims +j) << endl;
             }
             
             //shift sims and vecs
@@ -129,13 +137,13 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
 
             ableitung(bernd, anzahlvecs, abl);
 
-            cout << "abl: " << *(abl+34) << endl;
+            //cout << "abl: " << *(abl+34) << endl;
 
             float frequenz = bfrequenz(bernd, anzahlvecs);
 
             for(int j = 0; j < 20; j++){
-                cout << *(bernd_sims +j) << endl;
-                cout << *(bernd + j) << endl;
+                //cout << *(bernd_sims +j) << endl;
+                //cout << *(bernd + j) << endl;
             }
 
 
@@ -158,7 +166,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
 
             csv_Out += to_string(frequenz);
             csv_Out += "; ";
-            csv_Out += to_string(abw*1000);
+            csv_Out += to_string(abw);
             csv_Out += "; ";
             csv_Out += to_string(rund);
             csv_Out += "\n";
@@ -179,37 +187,37 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
                 input[j + 2*anzahlvecs] = sigmoid(*(bernd_sims + j));
             }
 
-            cout << "frequenz: " << sigmoid((frequenz-0.5)) << endl; 
+            //cout << "frequenz: " << sigmoid((frequenz-0.5)) << endl; 
 
             input[(int)(2.5*anzahlvecs)] = sigmoid((frequenz-0.5));
             input[(int)(2.5*anzahlvecs)+1] = sigmoid(abw*1000);
             input[(int)(2.5*anzahlvecs)+2] = sigmoid(rund);
 
             for(int j=399;j<800;j++){
-                cout << input[j] << endl;
+                //cout << input[j] << endl;
             }
 
             //Matrizenmultiplikation
-            cout << "\noutputs" << endl;
+            //cout << "\noutputs" << endl;
 
             for(int j = 0; j < anzahl_blattsorten;j++){
                 for(int k = 0; k < (int)(2.5*anzahlvecs)+3;k++){
                     output[j] += matrix[k][j]* input[k];
                 }
-                cout << output[j] << endl;
+                //cout << output[j] << endl;
             }
 
             //Output sigmoiden
             double bias = 0.5;
-            cout << "\noutputs sigmoid" << endl;
+            //cout << "\noutputs sigmoid" << endl;
 
             for(int j=0; j < anzahl_blattsorten; j++){
                 output[j] = sigmoid(output[j] - bias);
-                cout << output[j] << endl;
+                //cout << output[j] << endl;
             }
 
             //Fehlerkalkulation
-            cout << "\nErrors" << endl;
+            //cout << "\nErrors" << endl;
 
             for(int j = 0; j < anzahl_blattsorten; j++){
                 if(path_random == j){
@@ -218,7 +226,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
                 else{
                     fehler[j] = (output[j] - 0);
                 }
-                cout << fehler[j] << endl;
+                //cout << fehler[j] << endl;
             }
 
             
@@ -236,13 +244,21 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
                 }
             }
 
+            for(int w =0; w<anzahlvecs; w++){
+                *(vecs+w) = 0;
+            }
+
+            for(int w =0; w<bildgroesse*bildgroesse; w++){
+                *(pgm+w) = 0;
+            }
+
+
         }
-        break;
 
     }
 
 
-    cout << "starting output" << endl;
+    //cout << "starting output" << endl;
 
     //output in matrix.leaves
     string out;
