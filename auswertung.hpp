@@ -15,7 +15,7 @@
 
 using namespace std;
 
-int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int anzahl_blattsorten);
+int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int anzahl_blattsorten, int* pgm, float* sims, float* vecs, float* abl, float* bernd, float* bernd_sims);
 
 inline double sigmoid(double x);
 

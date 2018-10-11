@@ -35,6 +35,9 @@ int main() {
 	float abw;
     int sym;
 	float rund;
+	static float abl [ANZAHLVECS];
+    static float bernd[ANZAHLVECS];
+    static float bernd_sims[ANZAHLVECS/2];
 
 	int err = 0;
 	do{
@@ -127,7 +130,7 @@ int main() {
 
 			//training
 			case(3):
-				err = auswertung(ANZAHLVECS,BILDGROESSE,LERNINGRATE,"trainingData",BLATTSORTEN);
+				err = auswertung(ANZAHLVECS,BILDGROESSE,LERNINGRATE,"trainingData",BLATTSORTEN, pgm, sims, vecs, abl, bernd, bernd_sims);
 				if(err != 0){
 					cout << "Fehler!" << endl;
 				};

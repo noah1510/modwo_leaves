@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int anzahl_blattsorten){
+int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int anzahl_blattsorten,  int* pgm, float* sims, float* vecs, float* abl, float* bernd, float* bernd_sims){
 
     //variable init
     double matrix[(int)(2.5*anzahlvecs)+3][anzahl_blattsorten];
@@ -72,16 +72,21 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
         //cout << sorten_counter[path_random-1] << endl;
         //cout << (sorten_counter[path_random-1]<11) << endl;
         if(sorten_counter[path_random]<10){
+
+            /*
             int pgm [bildgroesse*bildgroesse];
-            int* point;
+            
             float vecs [anzahlvecs];
             float sims [anzahlvecs/2];
             float abl [anzahlvecs];
             float bernd[anzahlvecs];
             float bernd_sims[anzahlvecs/2];
-            float abw;
-            int sym;
-	        float rund;
+            */
+           int* point;
+
+            static float abw;
+            static int sym;
+	        static float rund;
 
             double input[(int)(2.5*anzahlvecs)+3];
             double output[anzahl_blattsorten];
@@ -133,6 +138,10 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
             input[(int)(2.5*anzahlvecs)+1] = sigmoid(frequenz-0.5);
             input[(int)(2.5*anzahlvecs)+2] = sigmoid(abw*1000);
             input[(int)(2.5*anzahlvecs)+3] = sigmoid(rund*1000);
+
+            for(int j=0;j<1003;j++){
+                cout << input[j] << endl;
+            }
 
             //Matrizenmultiplikation
             cout << "\noutputs" << endl;
