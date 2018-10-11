@@ -20,8 +20,8 @@ using namespace std;
 
 const int BILDGROESSE = 256;
 const int ANZAHLVECS = 400;
-const int BLATTSORTEN = 7;
-const float LERNINGRATE = 0.01f;
+const int BLATTSORTEN = 4;
+const float LERNINGRATE = 0.001f;
 
 
 int main() {

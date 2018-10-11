@@ -57,13 +57,16 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
     if (!inited){
         for(int j = 0; j < anzahl_blattsorten;j++){
             for(int i = 0; i < (int)(2.5*anzahlvecs)+3;i++){
-                matrix[i][j] = 0.0001;
+                matrix[i][j] = 0.01;
             }
         }
     }
 
     int sorten_counter[anzahl_blattsorten];
-    sorten_counter[0] = 0;
+    for(int i=0; i< anzahl_blattsorten; i++){
+        sorten_counter[i] = 0;
+    }
+    
     //cout << (0<anzahl_blattsorten*20) << endl;
     for(int i=0; i<anzahl_blattsorten*20; i++){
         //int path_random = (rand() % anzahl_blattsorten) + 1;
@@ -180,35 +183,28 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
 
             for(int j = 0; j < anzahl_blattsorten; j++){
                 if(path_random == j){
-                    fehler[j] = (1-output[j]);
+                    fehler[j] = (output[j] - 1);
                 }
                 else{
-                    fehler[j] = (0-output[j]);
+                    fehler[j] = (output[j] - 0);
                 }
                 cout << fehler[j] << endl;
             }
 
-            cout << "\ncost" << endl;
-
-            double cost = 0;
-
-            for (int j = 0; j < anzahl_blattsorten; j++){
-                cost += fehler[j];
-            }
-
-            cout << cost << endl;
+            
 
             //backpropagation
             for(int j = 0; j < anzahl_blattsorten;j++){
                 for(int k = 0; k < (int)(2.5*anzahlvecs)+3;k++){
-                    //matrix[k][j] += (input[k] * cost * lernrate) / (((2.5*anzahlvecs)+3) * 0.5 * fehler[j] * fehler[j]);
-                    matrix[k][j] += (input[k] /** matrix[k][j]*/ * lernrate) * (abs(fehler[j]/cost)) / ((2.5*anzahlvecs)+3);
+                    matrix[k][j] -= lernrate * fehler[j] * output[j] * (1 - output[j]) * input[k];
+
+                    //cout << lernrate * fehler[j] * output[j] * (1 - output[j]) * input[k] << endl;
+
                     if (matrix[k][j] < 0){
-                        cout << "SHIT" << endl;
+                        //cout << "SHIT" << endl;
                     }
                 }
             }
-  
 
         }
         break;
