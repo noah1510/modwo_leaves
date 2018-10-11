@@ -24,11 +24,12 @@ int checkSymmetry(int anzahlvektoren, float* abweichung, int* achse, float* vecs
             isFirst = false;
         }
         //cout << i << " " << abw_sum <<endl;
-        *(sims+i) = abw_sum;
-        sum_abw_sum += abw_sum;
+        *(sims+i) = log10(abw_sum);
+        sum_abw_sum += log10(abw_sum);
     }
     *(achse) = pos_min;
-    *(abweichung) = abw_min;
+    *(abweichung) = log10(abw_min*100000);
+    cout << "abwmin: "<< log10(abw_min*100000) << endl;
     *(ruendlichkeit) = sum_abw_sum / (anzahlvektoren/2);
     return 0;
 }

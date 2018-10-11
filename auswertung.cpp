@@ -119,7 +119,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
             }
             
             for(int j=0; j<anzahlvecs/2; j++){
-                *(bernd_sims + j) = *(vecs + (j+sym)%(anzahlvecs/2));
+                *(bernd_sims + j) = *(sims + (j+sym)%(anzahlvecs/2));
             }
 
             ableitung(bernd, anzahlvecs, abl);
@@ -128,6 +128,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
 
             for(int j = 0; j < 20; j++){
                 cout << *(bernd_sims +j) << endl;
+                cout << *(bernd + j) << endl;
             }
 
             //Werte mit Sigmoid in Input Vector schreiben
@@ -140,15 +141,17 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
             }
 
             for(int j=0; j<anzahlvecs/2; j++){
-                input[j + 2*anzahlvecs] = sigmoid(*(bernd_sims + j) * 1000);
+                input[j + 2*anzahlvecs] = sigmoid(*(bernd_sims + j));
             }
 
-            input[(int)(2.5*anzahlvecs)+1] = sigmoid(frequenz-0.5);
-            input[(int)(2.5*anzahlvecs)+2] = sigmoid(abw*1000);
-            input[(int)(2.5*anzahlvecs)+3] = sigmoid(rund*1000);
+            cout << "frequenz: " << sigmoid(frequenz) << endl; 
+
+            input[(int)(2.5*anzahlvecs)] = sigmoid(frequenz);
+            input[(int)(2.5*anzahlvecs)+1] = sigmoid(abw*1000);
+            input[(int)(2.5*anzahlvecs)+2] = sigmoid(rund);
 
             for(int j=0;j<1003;j++){
-                //cout << input[j] << endl;
+                cout << input[j] << endl;
             }
 
             //Matrizenmultiplikation
