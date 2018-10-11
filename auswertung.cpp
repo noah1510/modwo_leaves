@@ -23,7 +23,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
 
                     matrix[i][counter-1] = stod( line.substr(pos_str, line.find(",")-pos_str));
 
-                    pos_str = line.find(",")+1;
+                    pos_str = int(line.find(","))+1;
 
                 }
                 matrix[(int)(2.5*anzahlvecs)+2][counter-1] = stod( line.substr(pos_str, line.find(",")-pos_str));
@@ -92,7 +92,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
             double output[anzahl_blattsorten];
             double fehler[anzahl_blattsorten];
 
-            int err = convcsv(path + "/" + to_string(path_random) + ".csv", pgm);
+            int err = convcsv(path + "/" + to_string(path_random) + ".csv", pgm); //error possible here!
 		    if(err != 0){
 			    cout << "Datei nicht vorhanden!" << endl;
 		    }

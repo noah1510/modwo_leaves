@@ -73,7 +73,7 @@ int vektoren(float* laengen, int* arr_img, int* point, int bildgroesse, int anza
 
 int normVecs(float* arr_vecs, int anzahlvektoren){
 
-    float sum;
+    float sum = 0;
 
     for(int i=0; i<anzahlvektoren; i++){
 
