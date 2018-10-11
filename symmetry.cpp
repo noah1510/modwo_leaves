@@ -23,7 +23,7 @@ int checkSymmetry(int anzahlvektoren, float* abweichung, int* achse, float* vecs
             pos_min = i;
             isFirst = false;
         }
-        cout << i << " " << abw_sum <<endl;
+        //cout << i << " " << abw_sum <<endl;
         *(sims+i) = abw_sum;
         sum_abw_sum += abw_sum;
     }

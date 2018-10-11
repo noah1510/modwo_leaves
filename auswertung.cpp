@@ -5,10 +5,9 @@ using namespace std;
 int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int anzahl_blattsorten){
 
     //variable init
-    float matrix[(int)(2.5*anzahlvecs)+3][anzahl_blattsorten];
+    double matrix[(int)(2.5*anzahlvecs)+3][anzahl_blattsorten];
     bool inited = false;
-    float input[(int)(2.5*anzahlvecs)+3];
-    float output[anzahl_blattsorten];
+    
 
     //read or create matrix.leaves
     string line;
@@ -21,12 +20,12 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
                 int pos_str = 0;
                 for(int i = 0; i < (int)(2.5*anzahlvecs)+2; i++){
 
-                    matrix[i][counter] = stof( line.substr(pos_str, line.find(",")-pos_str));
+                    matrix[i][counter] = stod( line.substr(pos_str, line.find(",")-pos_str));
 
                     pos_str = line.find(",")+1;
 
                 }
-                matrix[(int)(2.5*anzahlvecs)+2][counter] = stof( line.substr(pos_str, line.find(",")-pos_str));
+                matrix[(int)(2.5*anzahlvecs)+2][counter] = stod( line.substr(pos_str, line.find(",")-pos_str));
                 counter++;   
             }else{
                 
@@ -57,31 +56,44 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
     if (!inited){
         for(int j = 0; j < anzahl_blattsorten;j++){
             for(int i = 0; i < (int)(2.5*anzahlvecs)+3;i++){
-                matrix[i][j] = 0.25;
+                matrix[i][j] = 0.001;
             }
         }
     }
 
     int sorten_counter[anzahl_blattsorten];
-
+    sorten_counter[0] = 0;
+    //cout << (0<anzahl_blattsorten*20) << endl;
     for(int i=0; i<anzahl_blattsorten*20; i++){
-        int path_random = (rand() % anzahl_blattsorten) + 1;
-        sorten_counter[path_random-1]++;
-
-        if(sorten_counter[path_random-1]<11){
+        //int path_random = (rand() % anzahl_blattsorten) + 1;
+        int path_random = 0;
+        sorten_counter[path_random]++;
+        //cout << sorten_counter[path_random-1] << endl;
+        //cout << (sorten_counter[path_random-1]<11) << endl;
+        if(sorten_counter[path_random]<10){
             int pgm [bildgroesse*bildgroesse];
             int* point;
             float vecs [anzahlvecs];
             float sims [anzahlvecs/2];
             float abl [anzahlvecs];
+            float bernd[anzahlvecs];
+            float bernd_sims[anzahlvecs/2];
             float abw;
             int sym;
 	        float rund;
+
+            double input[(int)(2.5*anzahlvecs)+3];
+            double output[anzahl_blattsorten];
+            double fehler[anzahl_blattsorten];
 
             int err = convcsv(path + "/" + to_string(path_random) + ".csv", pgm);
 		    if(err != 0){
 			    cout << "Datei nicht vorhanden!" << endl;
 		    }
+
+            /*for(int j=0; j<256;j++){
+                cout << pgm[j] << endl;
+            }*/
 
             point = schwerpunkt(pgm, bildgroesse);
 
@@ -91,8 +103,70 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
 
             checkSymmetry(anzahlvecs, &abw, &sym, vecs, &rund, sims);
 
-            ableitung(vecs, anzahlvecs, abl);
+            //shift sims and vecs
+            for(int j=0; j<anzahlvecs; j++){
+                bernd[i]= vecs[(i+sym)%anzahlvecs];
+            }
+            
+            for(int j=0; j<anzahlvecs/2; j++){
+                bernd_sims[i] = vecs[(i+sym)%(anzahlvecs/2)];
+            }
+
+            ableitung(bernd, anzahlvecs, abl);
+
+            float frequenz = bfrequenz(bernd, anzahlvecs);
+
+            //Werte mit Sigmoid in Input Vector schreiben
+            for(int j=0; j<anzahlvecs; j++){
+                input[j] = sigmoid(bernd[j]-1);
+            }
+
+            for(int j=0; j<anzahlvecs; j++){
+                input[j+anzahlvecs] = sigmoid(abl[j]);
+            }
+
+            for(int j=0; j<anzahlvecs/2; j++){
+                input[j+2*anzahlvecs] = sigmoid(bernd_sims[j]*1000);
+            }
+
+            input[(int)(2.5*anzahlvecs)+1] = sigmoid(frequenz-0.5);
+            input[(int)(2.5*anzahlvecs)+2] = sigmoid(abw*1000);
+            input[(int)(2.5*anzahlvecs)+3] = sigmoid(rund*1000);
+
+            //Matrizenmultiplikation
+            for(int j = 0; j < anzahl_blattsorten;j++){
+                for(int k = 0; k < (int)(2.5*anzahlvecs)+3;k++){
+                    output[j] += matrix[k][j]* input[k]; 
+                }
+                cout << output[j] << endl;
+            }
+
+            //Output sigmoiden
+            for(int j=0; j < anzahl_blattsorten; j++){
+                output[j] = sigmoid(output[j]);
+            }
+
+            //Fehlerkalkulation
+            for(int j = 0; j < anzahl_blattsorten; j++){
+                if(path_random == j){
+                    fehler[j] = (1-output[j]);
+                }
+                else{
+                    fehler[j] = (0-output[j]);
+                }
+                cout << fehler[j] << endl;
+            }
+
+            //backpropagation
+            for(int j = 0; j < anzahl_blattsorten;j++){
+                for(int k = 0; k < (int)(2.5*anzahlvecs)+3;k++){
+                    matrix[k][j] += input[k] * fehler[j] * lernrate / ((2.5*anzahlvecs)+3);
+                }
+            }
+  
+
         }
+        break;
 
     }
 
@@ -108,17 +182,25 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
     out += "\n";
     for(int i=0; i<anzahl_blattsorten; i++){
         for(int j=0; j<(int)(2.5*anzahlvecs)+2; j++){
-            out += to_string(matrix[i][j]);
+            out += to_string(matrix[j][i]);
             out += ", ";
         }
-        out += to_string(matrix[i][(int)(2.5*anzahlvecs)+2]);
+        out += to_string(matrix[(int)(2.5*anzahlvecs)+2][i]);
         out += "\n";
     }
 
-    cout << out << endl;
+    //cout << out << endl;
 
     csvWrite << out;
     csvWrite.close();
 
     return 0;
+}
+
+inline double sigmoid(double x){
+    return 1 / (1 + (exp(-x)));
+}
+
+inline double sigmoid(float x){
+    return (double) 1 / (1 + (exp((double) -x)));
 }
