@@ -139,20 +139,20 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
             }
 
             for(int j=0; j<anzahlvecs; j++){
-                input[j + anzahlvecs] = sigmoid(*(abl + j));
+                input[j + anzahlvecs] = sigmoid(*(abl + j)*100);
             }
 
             for(int j=0; j<anzahlvecs/2; j++){
                 input[j + 2*anzahlvecs] = sigmoid(*(bernd_sims + j));
             }
 
-            cout << "frequenz: " << sigmoid(frequenz) << endl; 
+            cout << "frequenz: " << sigmoid((frequenz-0.5)) << endl; 
 
-            input[(int)(2.5*anzahlvecs)] = sigmoid(frequenz);
+            input[(int)(2.5*anzahlvecs)] = sigmoid((frequenz-0.5));
             input[(int)(2.5*anzahlvecs)+1] = sigmoid(abw*1000);
             input[(int)(2.5*anzahlvecs)+2] = sigmoid(rund);
 
-            for(int j=0;j<1003;j++){
+            for(int j=399;j<800;j++){
                 cout << input[j] << endl;
             }
 
@@ -234,7 +234,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
         out += "\n";
     }
 
-    cout << out << endl;
+    //cout << out << endl;
 
     csvWrite << out;
     csvWrite.close();

@@ -31,9 +31,9 @@ float standartabweichung(float* arr, int laenge){
 
 int ableitung(float* arr, int laenge, float* result){
     float lastvalue = *(arr+laenge-1);
-    
+
     for(int i = 0; i < laenge; i++){
-        *(result+i) = *(arr+i) - lastvalue;
+        *(result+i) = *(arr+i) - *(arr+(i+1)%laenge);
     }
     return 0;
 }

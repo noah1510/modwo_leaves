@@ -130,7 +130,7 @@ int main() {
 
             //training
             case(3):
-				err = auswertung(ANZAHLVECS,BILDGROESSE,LERNINGRATE,"/Users/tobias/git/modwo_leaves/modwo_leaves/modwo_leaves/trainingData",BLATTSORTEN, pgm, sims, vecs, abl, bernd, bernd_sims);
+				err = auswertung(ANZAHLVECS,BILDGROESSE,LERNINGRATE,"trainingData",BLATTSORTEN, pgm, sims, vecs, abl, bernd, bernd_sims);
                 if(err != 0){
                     cout << "Fehler!" << endl;
                 };
