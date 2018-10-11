@@ -31,7 +31,6 @@ int convcsv (string path, int* output){
 
     ifstream imageget (path);
     if (imageget.is_open() ) {
-        int counter = 0;
         while ( getline (imageget, line)) {
             int pos_str = 0;
             for(int i = 0; i < 255; i++){

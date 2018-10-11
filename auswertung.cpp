@@ -23,7 +23,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
 
                     matrix[i][counter-1] = stod( line.substr(pos_str, line.find(",")-pos_str));
 
-                    pos_str = line.find(",")+1;
+                    pos_str = int(line.find(","))+1;
 
                 }
                 matrix[(int)(2.5*anzahlvecs)+2][counter-1] = stod( line.substr(pos_str, line.find(",")-pos_str));
@@ -92,7 +92,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
             double output[anzahl_blattsorten];
             double fehler[anzahl_blattsorten];
 
-            int err = convcsv(path + "/" + to_string(path_random) + ".csv", pgm);
+            int err = convcsv(path + "/" + to_string(path_random) + ".csv", pgm); //error possible here!
 		    if(err != 0){
 			    cout << "Datei nicht vorhanden!" << endl;
 		    }
@@ -127,8 +127,12 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
             float frequenz = bfrequenz(bernd, anzahlvecs);
 
             for(int j = 0; j < 20; j++){
+<<<<<<< HEAD
                 cout << *(bernd_sims +j) << endl;
                 cout << *(bernd + j) << endl;
+=======
+               // cout << *(bernd_sims +j) << endl;
+>>>>>>> dbc1093e37e23d8e679b0586971a6d8a985967a0
             }
 
             //Werte mit Sigmoid in Input Vector schreiben
@@ -159,7 +163,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
 
             for(int j = 0; j < anzahl_blattsorten;j++){
                 for(int k = 0; k < (int)(2.5*anzahlvecs)+3;k++){
-                    output[j] += matrix[k][j]* input[k]; 
+                    output[j] += matrix[k][j]* input[k];
                 }
                 cout << output[j] << endl;
             }
@@ -200,7 +204,10 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
             for(int j = 0; j < anzahl_blattsorten;j++){
                 for(int k = 0; k < (int)(2.5*anzahlvecs)+3;k++){
                     //matrix[k][j] += (input[k] * cost * lernrate) / (((2.5*anzahlvecs)+3) * 0.5 * fehler[j] * fehler[j]);
-                    matrix[k][j] += (input[k] /** matrix[k][j]*/ * lernrate) * (cost/ abs(fehler[j])) / ((2.5*anzahlvecs)+3);
+                    matrix[k][j] += (input[k] /** matrix[k][j]*/ * lernrate) * (abs(fehler[j]/cost)) / ((2.5*anzahlvecs)+3);
+                    if (matrix[k][j] < 0){
+                        cout << "SHIT" << endl;
+                    }
                 }
             }
   
