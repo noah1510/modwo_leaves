@@ -17,19 +17,20 @@
         int pos_y = i/groesse;
         int i_pixel = *(arr_img+i);
 
-         if(i_pixel < 220){
+        if(i_pixel < 220){
             Sum++;
             rowWeight += pos_x;
             colWeight += pos_y;
 
-         }else{
-         }
+        }
+        //cout << "row:" << rowWeight << " ,col:" << colWeight << " ,x:" << pos_x << " ,y:" << pos_y << " ,value" << *(arr_img+i) << endl;
          
     }
-     static int point [2];
+    static int point [2];
+    if (Sum == 0){Sum = 1;};
      
-     point[0] = round(rowWeight / Sum);
-     point[1] = round(colWeight / Sum);
+    point[0] = round(rowWeight / Sum);
+    point[1] = round(colWeight / Sum);
      
-     return point;
+    return point;
 }

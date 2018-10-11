@@ -101,26 +101,37 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
             double output[anzahl_blattsorten];
             double fehler[anzahl_blattsorten];
 
-            int err = convcsv(path + "/" + to_string(path_random) + "/" + to_string(sorten_counter[path_random]) + ".csv", pgm); //error possible here!
+            int err = convcsv((path + "/" + to_string(path_random) + "/" + to_string(sorten_counter[path_random]) + ".csv"), pgm); //error possible here!
 		    if(err != 0){
-			    //cout << "Datei nicht vorhanden!" << endl;
+			    cout << "Datei nicht vorhanden!" << endl;
 		    }
 
             cout << path + "/" + to_string(path_random) + "/" + to_string(sorten_counter[path_random]) << endl;
 
+            /*
             for(int j=0; j<256;j++){
-                cout << pgm[j+10000] << endl;
+                cout << *(pgm+j+10000) << endl;
             }
+            */
+           //cout << "HI" << endl;
 
             sorten_counter[path_random] +=1;
 
             point = schwerpunkt(pgm, bildgroesse);
 
+            //cout << "HI, schwer" << endl;
+
             vektoren(vecs,pgm,point,bildgroesse,anzahlvecs);
+
+            //cout << "HI, vektor" << endl;
 
             normVecs(vecs, anzahlvecs);
 
+            //cout << "HI, norm" << endl;
+
             checkSymmetry(anzahlvecs, &abw, &sym, vecs, &rund, sims);
+
+            //cout << "HI, sims" << endl;
 
             for(int j = 0; j < 20; j++){
                 //cout << *(sims +j) << endl;
@@ -137,7 +148,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
 
             ableitung(bernd, anzahlvecs, abl);
 
-            //cout << "abl: " << *(abl+34) << endl;
+            cout << "abl: " << *(abl+34) << endl;
 
             float frequenz = bfrequenz(bernd, anzahlvecs);
 
@@ -248,10 +259,11 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
                 *(vecs+w) = 0;
             }
 
+            /*
             for(int w =0; w<bildgroesse*bildgroesse; w++){
                 *(pgm+w) = 0;
             }
-
+            */
 
         }
 
