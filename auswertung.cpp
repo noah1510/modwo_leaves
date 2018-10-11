@@ -124,15 +124,13 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
 
             ableitung(bernd, anzahlvecs, abl);
 
+            cout << "abl: " << *(abl+34) << endl;
+
             float frequenz = bfrequenz(bernd, anzahlvecs);
 
             for(int j = 0; j < 20; j++){
-<<<<<<< HEAD
                 cout << *(bernd_sims +j) << endl;
                 cout << *(bernd + j) << endl;
-=======
-               // cout << *(bernd_sims +j) << endl;
->>>>>>> dbc1093e37e23d8e679b0586971a6d8a985967a0
             }
 
             //Werte mit Sigmoid in Input Vector schreiben
@@ -155,7 +153,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
             input[(int)(2.5*anzahlvecs)+2] = sigmoid(rund);
 
             for(int j=0;j<1003;j++){
-                cout << input[j] << endl;
+                //cout << input[j] << endl;
             }
 
             //Matrizenmultiplikation

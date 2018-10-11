@@ -3,17 +3,17 @@
 #include <math.h>
 
 #include "convert.hpp"
-//#include "convert.cpp"
+#include "convert.cpp"
 #include "schwerpunkt.hpp"
-//#include "schwerpunkt.cpp"
+#include "schwerpunkt.cpp"
 #include "vektoren.hpp"
-//#include "vektoren.cpp"
+#include "vektoren.cpp"
 #include "symmetry.hpp"
-//#include "symmetry.cpp"
+#include "symmetry.cpp"
 #include "auswertung.hpp"
-//#include "auswertung.cpp"
+#include "auswertung.cpp"
 #include "commonFunctions.hpp"
-//#include "commonFunctions.cpp"
+#include "commonFunctions.cpp"
 
 using namespace std;
 
