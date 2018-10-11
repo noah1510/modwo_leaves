@@ -153,7 +153,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
             input[(int)(2.5*anzahlvecs)+2] = sigmoid(rund);
 
             for(int j=0;j<1003;j++){
-                //cout << input[j] << endl;
+                cout << input[j] << endl;
             }
 
             //Matrizenmultiplikation
@@ -216,7 +216,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
     }
 
 
-
+    cout << "starting output" << endl;
 
     //output in matrix.leaves
     string out;
@@ -234,7 +234,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
         out += "\n";
     }
 
-    //cout << out << endl;
+    cout << out << endl;
 
     csvWrite << out;
     csvWrite.close();
