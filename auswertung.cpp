@@ -127,7 +127,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
             float frequenz = bfrequenz(bernd, anzahlvecs);
 
             for(int j = 0; j < 20; j++){
-                cout << *(bernd_sims +j) << endl;
+               // cout << *(bernd_sims +j) << endl;
             }
 
             //Werte mit Sigmoid in Input Vector schreiben
@@ -156,7 +156,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
 
             for(int j = 0; j < anzahl_blattsorten;j++){
                 for(int k = 0; k < (int)(2.5*anzahlvecs)+3;k++){
-                    output[j] += matrix[k][j]* input[k]; 
+                    output[j] += matrix[k][j]* input[k];
                 }
                 cout << output[j] << endl;
             }
@@ -197,7 +197,10 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
             for(int j = 0; j < anzahl_blattsorten;j++){
                 for(int k = 0; k < (int)(2.5*anzahlvecs)+3;k++){
                     //matrix[k][j] += (input[k] * cost * lernrate) / (((2.5*anzahlvecs)+3) * 0.5 * fehler[j] * fehler[j]);
-                    matrix[k][j] += (input[k] /** matrix[k][j]*/ * lernrate) * (cost/ abs(fehler[j])) / ((2.5*anzahlvecs)+3);
+                    matrix[k][j] += (input[k] /** matrix[k][j]*/ * lernrate) * (abs(fehler[j]/cost)) / ((2.5*anzahlvecs)+3);
+                    if (matrix[k][j] < 0){
+                        cout << "SHIT" << endl;
+                    }
                 }
             }
   
