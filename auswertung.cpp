@@ -196,8 +196,8 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
             //backpropagation
             for(int j = 0; j < anzahl_blattsorten;j++){
                 for(int k = 0; k < (int)(2.5*anzahlvecs)+3;k++){
-                    matrix[k][j] -= lernrate * fehler[j] * output[j] * (1 - output[j]) * input[k];
-
+                    //matrix[k][j] += lernrate * fehler[j] * output[j] * (1 - output[j]) * input[k];
+                    matrix[k][j] -= lernrate * fehler[j] * matrix[k][j] * input[k];
                     //cout << lernrate * fehler[j] * output[j] * (1 - output[j]) * input[k] << endl;
 
                     if (matrix[k][j] < 0){
