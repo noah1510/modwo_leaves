@@ -21,7 +21,7 @@ using namespace std;
 const int BILDGROESSE = 256;
 const int ANZAHLVECS = 400;
 const int BLATTSORTEN = 7;
-const float LERNINGRATE = 0.1f;
+const float LERNINGRATE = 0.01f;
 
 
 int main() {

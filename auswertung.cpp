@@ -15,17 +15,18 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
     if (csvGet.is_open() ) {
         int counter = 0;
         while ( getline (csvGet, line)) {
+            //cout << line << endl;
             if(counter != 0 && inited){
 
                 int pos_str = 0;
                 for(int i = 0; i < (int)(2.5*anzahlvecs)+2; i++){
 
-                    matrix[i][counter] = stod( line.substr(pos_str, line.find(",")-pos_str));
+                    matrix[i][counter-1] = stod( line.substr(pos_str, line.find(",")-pos_str));
 
                     pos_str = line.find(",")+1;
 
                 }
-                matrix[(int)(2.5*anzahlvecs)+2][counter] = stod( line.substr(pos_str, line.find(",")-pos_str));
+                matrix[(int)(2.5*anzahlvecs)+2][counter-1] = stod( line.substr(pos_str, line.find(",")-pos_str));
                 counter++;   
             }else{
                 
@@ -56,7 +57,7 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
     if (!inited){
         for(int j = 0; j < anzahl_blattsorten;j++){
             for(int i = 0; i < (int)(2.5*anzahlvecs)+3;i++){
-                matrix[i][j] = 0.001;
+                matrix[i][j] = 0.0001;
             }
         }
     }
@@ -134,6 +135,8 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
             input[(int)(2.5*anzahlvecs)+3] = sigmoid(rund*1000);
 
             //Matrizenmultiplikation
+            cout << "\noutputs" << endl;
+
             for(int j = 0; j < anzahl_blattsorten;j++){
                 for(int k = 0; k < (int)(2.5*anzahlvecs)+3;k++){
                     output[j] += matrix[k][j]* input[k]; 
@@ -142,11 +145,17 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
             }
 
             //Output sigmoiden
+            double bias = 0.5;
+            cout << "\noutputs sigmoid" << endl;
+
             for(int j=0; j < anzahl_blattsorten; j++){
-                output[j] = sigmoid(output[j]);
+                output[j] = sigmoid(output[j] - bias);
+                cout << output[j] << endl;
             }
 
             //Fehlerkalkulation
+            cout << "\nErrors" << endl;
+
             for(int j = 0; j < anzahl_blattsorten; j++){
                 if(path_random == j){
                     fehler[j] = (1-output[j]);
@@ -157,10 +166,21 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
                 cout << fehler[j] << endl;
             }
 
+            cout << "\ncost" << endl;
+
+            double cost = 0;
+
+            for (int j = 0; j < anzahl_blattsorten; j++){
+                cost += fehler[j];
+            }
+
+            cout << cost << endl;
+
             //backpropagation
             for(int j = 0; j < anzahl_blattsorten;j++){
                 for(int k = 0; k < (int)(2.5*anzahlvecs)+3;k++){
-                    matrix[k][j] += input[k] * fehler[j] * lernrate / ((2.5*anzahlvecs)+3);
+                    //matrix[k][j] += (input[k] * cost * lernrate) / (((2.5*anzahlvecs)+3) * 0.5 * fehler[j] * fehler[j]);
+                    matrix[k][j] += (input[k] /** matrix[k][j]*/ * lernrate) * (cost/ abs(fehler[j])) / ((2.5*anzahlvecs)+3);
                 }
             }
   
