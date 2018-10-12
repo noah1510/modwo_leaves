@@ -20,3 +20,5 @@ int auswertung(int anzahlvecs, int bildgroesse, float lernrate, string path, int
 inline double sigmoid(double x);
 
 inline double sigmoid(float x);
+
+inline double inv_sig(double x);

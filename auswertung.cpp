@@ -243,11 +243,11 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
                 for(int j = 0; j < anzahl_blattsorten; j++){
                     if(path_random == j){
                         fehler[j] = (output[j] - 1);
-                        fehler[j] *= 1.5;
+                        //fehler[j] *= 1.5;
                     }
                     else{
                         fehler[j] = (output[j] - 0);
-                        fehler[j] *= 0.75;
+                        //fehler[j] *= 0.75;
                     }
                     //cout << fehler[j] << endl;
                 }
@@ -257,8 +257,8 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
                 //backpropagation
                 for(int j = 0; j < anzahl_blattsorten;j++){
                     for(int k = 0; k < (int)(2.5*anzahlvecs)+3;k++){
-                        //matrix[k][j] += lernrate * fehler[j] * output[j] * (1 - output[j]) * input[k];
-                        matrix[k][j] -= lernrate * fehler[j] * matrix[k][j] * input[k];
+                        matrix[k][j] -= lernrate * fehler[j] * inv_sig(output[j]) * (1 - inv_sig(output[j])) * input[k] /((2.5*anzahlvecs)+3);
+                        //matrix[k][j] -= lernrate * fehler[j] * matrix[k][j] * input[k];
                         //cout << lernrate * fehler[j] * output[j] * (1 - output[j]) * input[k] << endl;
 
                         if (matrix[k][j] < 0){
@@ -337,4 +337,8 @@ inline double sigmoid(double x){
 
 inline double sigmoid(float x){
     return (double) 1 / (1 + (exp((double) -x)));
+}
+
+inline double inv_sig(double x){
+    return -log(1/x-1);
 }

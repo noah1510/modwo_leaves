@@ -22,7 +22,7 @@ const int BILDGROESSE = 512;
 const int ANZAHLVECS = 1000;
 const int BLATTSORTEN = 3;
 const float LERNINGRATE = 0.25f;
-const int BILDMENGE = 50;
+const int BILDMENGE = 112;
 
 
 int main() {
@@ -132,10 +132,12 @@ int main() {
 
             //training
             case(3):
-				err = auswertung(ANZAHLVECS,BILDGROESSE,LERNINGRATE,"csv",BLATTSORTEN, pgm, sims, vecs, abl, bernd, bernd_sims, BILDMENGE, true);
+				for(int s=0; s<15; s++){
+                err = auswertung(ANZAHLVECS,BILDGROESSE,LERNINGRATE,"csv",BLATTSORTEN, pgm, sims, vecs, abl, bernd, bernd_sims, BILDMENGE, true);
                 if(err != 0){
                     cout << "Fehler!" << endl;
                 };
+                }
                 break;
 
             case(4):
