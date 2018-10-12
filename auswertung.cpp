@@ -57,7 +57,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
     if (!inited){
         for(int j = 0; j < anzahl_blattsorten;j++){
             for(int i = 0; i < (int)(2.5*anzahlvecs)+3;i++){
-                matrix[i][j] = 0.01;
+                matrix[i][j] = (1/(2.5*anzahlvecs));
             }
         }
     }
@@ -69,6 +69,9 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
 
     string csv_Out;
     
+    double input[(int)(2.5*anzahlvecs)+3];
+    double output[anzahl_blattsorten];
+    double fehler[anzahl_blattsorten];
     
     for(int i=0; i<anzahl_blattsorten*bildmenge; i++){
         int path_random = 0;
@@ -97,17 +100,21 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
             static int sym;
 	        static float rund;
 
-            double input[(int)(2.5*anzahlvecs)+3];
-            double output[anzahl_blattsorten];
-            double fehler[anzahl_blattsorten];
+            
+            if(test){
 
-            int err = convcsv((path + "/" + to_string(path_random) + "/" + to_string(sorten_counter[path_random]) + ".csv"), pgm); //error possible here!
-		    if(err != 0){
-			    cout << "Datei nicht vorhanden!" << endl;
-		    }
+                int err = convcsv((path + "/" + to_string(path_random) + "/" + to_string(sorten_counter[path_random]) + ".csv"), pgm, bildgroesse); //error possible here!
+                if(err != 0){
+                    cout << "Datei nicht vorhanden!" << endl;
+                }
 
-            cout << path + "/" + to_string(path_random) + "/" + to_string(sorten_counter[path_random]) << endl;
+                //cout << path + "/" + to_string(path_random) + "/" + to_string(sorten_counter[path_random]) << endl;
+            }else{
 
+                int err = convcsv((path + ".csv"), pgm, bildgroesse); //error possible here!
+
+
+            }
             /*
             for(int j=0; j<256;j++){
                 cout << *(pgm+j+10000) << endl;
@@ -148,7 +155,7 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
 
             ableitung(bernd, anzahlvecs, abl);
 
-            cout << "abl: " << *(abl+34) << endl;
+            //cout << "abl: " << *(abl+34) << endl;
 
             float frequenz = bfrequenz(bernd, anzahlvecs);
 
@@ -226,37 +233,55 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
                 output[j] = sigmoid(output[j] - bias);
                 //cout << output[j] << endl;
             }
+            
 
             //Fehlerkalkulation
             //cout << "\nErrors" << endl;
 
-            for(int j = 0; j < anzahl_blattsorten; j++){
-                if(path_random == j){
-                    fehler[j] = (output[j] - 1);
+            if(test){
+
+                for(int j = 0; j < anzahl_blattsorten; j++){
+                    if(path_random == j){
+                        fehler[j] = (output[j] - 1);
+                        fehler[j] *= 1.5;
+                    }
+                    else{
+                        fehler[j] = (output[j] - 0);
+                        fehler[j] *= 0.75;
+                    }
+                    //cout << fehler[j] << endl;
                 }
-                else{
-                    fehler[j] = (output[j] - 0);
-                }
-                //cout << fehler[j] << endl;
-            }
 
-            
+                
 
-            //backpropagation
-            for(int j = 0; j < anzahl_blattsorten;j++){
-                for(int k = 0; k < (int)(2.5*anzahlvecs)+3;k++){
-                    //matrix[k][j] += lernrate * fehler[j] * output[j] * (1 - output[j]) * input[k];
-                    matrix[k][j] -= lernrate * fehler[j] * matrix[k][j] * input[k];
-                    //cout << lernrate * fehler[j] * output[j] * (1 - output[j]) * input[k] << endl;
+                //backpropagation
+                for(int j = 0; j < anzahl_blattsorten;j++){
+                    for(int k = 0; k < (int)(2.5*anzahlvecs)+3;k++){
+                        //matrix[k][j] += lernrate * fehler[j] * output[j] * (1 - output[j]) * input[k];
+                        matrix[k][j] -= lernrate * fehler[j] * matrix[k][j] * input[k];
+                        //cout << lernrate * fehler[j] * output[j] * (1 - output[j]) * input[k] << endl;
 
-                    if (matrix[k][j] < 0){
-                        //cout << "SHIT" << endl;
+                        if (matrix[k][j] < 0){
+                            //cout << "SHIT" << endl;
+                        }
                     }
                 }
-            }
 
-            for(int w =0; w<anzahlvecs; w++){
-                *(vecs+w) = 0;
+            }else{
+
+                double highest = 0.0;
+                int index = 0;
+
+                for(int x = 0; x < anzahl_blattsorten;x++){
+                    cout << "tree " << x << " with a propability of " << output[x] << "." << endl;
+                    if(output[x] > highest){
+                        highest = output[x];
+                        index = x;
+                    }
+                }
+
+                cout << "\nbest tree " << index << " with a propability of " << output[index] << "." << endl;
+
             }
 
             /*
@@ -267,36 +292,41 @@ int auswertung(int anzahlvecs,int bildgroesse, float lernrate, string path, int 
 
         }
 
+        if(!test){break;};
+
     }
 
 
     //cout << "starting output" << endl;
 
     //output in matrix.leaves
-    string out;
-    ofstream csvWrite (path + "/matrix.leaves");
-    out += to_string((int)(2.5*anzahlvecs)+3);
-    out += ", ";
-    out += to_string(anzahl_blattsorten);
-    out += "\n";
-    for(int i=0; i<anzahl_blattsorten; i++){
-        for(int j=0; j<(int)(2.5*anzahlvecs)+2; j++){
-            out += to_string(matrix[j][i]);
-            out += ", ";
-        }
-        out += to_string(matrix[(int)(2.5*anzahlvecs)+2][i]);
+    if(test){
+
+        string out;
+        ofstream csvWrite (path + "/matrix.leaves");
+        out += to_string((int)(2.5*anzahlvecs)+3);
+        out += ", ";
+        out += to_string(anzahl_blattsorten);
         out += "\n";
+        for(int i=0; i<anzahl_blattsorten; i++){
+            for(int j=0; j<(int)(2.5*anzahlvecs)+2; j++){
+                out += to_string(matrix[j][i]);
+                out += ", ";
+            }
+            out += to_string(matrix[(int)(2.5*anzahlvecs)+2][i]);
+            out += "\n";
+        }
+
+        //cout << out << endl;
+
+        csvWrite << out;
+        csvWrite.close();
+
+        ofstream csv_Write("data.csv");
+        csv_Write << csv_Out;
+        csv_Write.close();
+
     }
-
-    //cout << out << endl;
-
-    csvWrite << out;
-    csvWrite.close();
-
-    ofstream csv_Write("data.csv");
-    csv_Write << csv_Out;
-    csv_Write.close();
-
 
     return 0;
 }

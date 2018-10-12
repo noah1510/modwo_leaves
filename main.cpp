@@ -18,11 +18,11 @@
 using namespace std;
 
 
-const int BILDGROESSE = 256;
-const int ANZAHLVECS = 400;
-const int BLATTSORTEN = 4;
-const float LERNINGRATE = 0.5f;
-const int BILDMENGE = 15;
+const int BILDGROESSE = 512;
+const int ANZAHLVECS = 1000;
+const int BLATTSORTEN = 3;
+const float LERNINGRATE = 0.25f;
+const int BILDMENGE = 50;
 
 
 int main() {
@@ -48,6 +48,7 @@ int main() {
         cout << "1 - grayscale (.pgm)" << endl;
         cout << "2 - farbbild (.png)" << endl;
         cout << "3 - training" << endl;
+        cout << "4 - test" << endl;
 
         cin >> mode;
 
@@ -101,7 +102,7 @@ int main() {
 
                     cin >> filename;
     
-                    err = convcsv(filename+".csv", pgm);
+                    err = convcsv(filename+".csv", pgm, BILDGROESSE);
                     if(err != 0){
                         cout << "Datei nicht vorhanden!" << endl;
                     }
@@ -131,10 +132,24 @@ int main() {
 
             //training
             case(3):
-				err = auswertung(ANZAHLVECS,BILDGROESSE,LERNINGRATE,"trainingData",BLATTSORTEN, pgm, sims, vecs, abl, bernd, bernd_sims, BILDMENGE, true);
+				err = auswertung(ANZAHLVECS,BILDGROESSE,LERNINGRATE,"csv",BLATTSORTEN, pgm, sims, vecs, abl, bernd, bernd_sims, BILDMENGE, true);
                 if(err != 0){
                     cout << "Fehler!" << endl;
                 };
+                break;
+
+            case(4):
+                do{
+                    cout << "Geben Sie den Dateinamen ein." << endl;
+
+                    cin >> filename;
+    
+                    err = auswertung(ANZAHLVECS,BILDGROESSE,LERNINGRATE,filename,BLATTSORTEN, pgm, sims, vecs, abl, bernd, bernd_sims, BILDMENGE, false);
+                    if(err != 0){
+                    cout << "Fehler!" << endl;
+                    }
+                }while(err != 0);
+                
                 break;
 
             //ungültige fälle

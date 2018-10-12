@@ -8,6 +8,6 @@ using namespace std;
 
 int convgrayscale (string path, int* output);
 
-int convcsv (string path, int* output);
+int convcsv (string path, int* output, int bildgroesse);
 
 int getimage(string path, int* output, bool is_colored);

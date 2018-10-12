@@ -57,7 +57,7 @@ float bfrequenz(float* arr, int laenge){
             lastVZ = true;
         }
     }
-    cout << anzahlWechsel << ";" << laenge << endl;
+    //cout << anzahlWechsel << ";" << laenge << endl;
     return (float(anzahlWechsel) / float(laenge));
 }
 

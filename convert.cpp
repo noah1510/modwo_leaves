@@ -25,7 +25,7 @@ int convgrayscale (string path, int* output){
     
 }
 
-int convcsv (string path, int* output){
+int convcsv (string path, int* output, int bildgroesse){
     
     string line;
 
@@ -34,15 +34,15 @@ int convcsv (string path, int* output){
         int counter = 0;
         while ( getline (imageget, line)) {
             int pos_str = 0;
-            for(int i = 0; i < 255; i++){
+            for(int i = 0; i < bildgroesse-1; i++){
                 
 
-                *(output + i + counter*256) = stoi( line.substr(pos_str, line.find(",",pos_str)-pos_str));
+                *(output + i + counter*bildgroesse) = stoi( line.substr(pos_str, line.find(",",pos_str)-pos_str));
 
                 pos_str = line.find(",",pos_str)+1;
 
             }
-            *(output + 255 + counter*256) = stoi( line.substr(pos_str, line.find(",")-pos_str));
+            *(output + bildgroesse - 1 + counter*bildgroesse) = stoi( line.substr(pos_str, line.find(",")-pos_str));
             /*for(int x = 0;x < 256;x++){
                 cout << *(output + x + counter*256) << ",";
             }
